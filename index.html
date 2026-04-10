@@ -497,6 +497,11 @@
     }
     .token.dragging{cursor:grabbing}
     .token *{cursor:inherit}
+    .tokCore,
+    .tokLabel{
+      pointer-events:auto;
+      user-select:none;
+    }
     .tokCore{
       position:relative;
       display:grid;
@@ -516,8 +521,11 @@
       width:38px;
       height:38px;
       border-radius:11px;
-      background:linear-gradient(180deg,#9d7421,#5f3b0e);
-      color:#231404;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.08), rgba(0,0,0,.12)),
+        linear-gradient(180deg,#94b34a,#4d611e 58%, #25310f 100%);
+      color:#132008;
+      box-shadow:0 10px 22px rgba(0,0,0,.35), 0 0 0 1px rgba(191,217,106,.18);
     }
     .tokLabel{
       font-size:12px;
@@ -663,8 +671,11 @@
     }
     .nchip{
       border-radius:10px;
-      background:linear-gradient(180deg,#9d7421,#5f3b0e);
-      color:#231404;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.08), rgba(0,0,0,.12)),
+        linear-gradient(180deg,#94b34a,#4d611e 58%, #25310f 100%);
+      color:#132008;
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.08), 0 0 0 1px rgba(191,217,106,.14);
     }
     .pmeta,.nmeta,.effectMeta,.logMeta{min-width:0}
     .pmeta strong,.nmeta strong,.effectMeta strong,.logMeta strong{display:block;font-size:13px;line-height:1.15;overflow-wrap:anywhere}
@@ -3238,6 +3249,7 @@
         token.classList.add('dragging');
         token.setPointerCapture(e.pointerId);
         e.preventDefault();
+        e.stopPropagation();
       });
     }
     document.addEventListener('pointermove', (e) => {
