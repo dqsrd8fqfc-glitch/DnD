@@ -1831,16 +1831,21 @@
       { id:'barrel', left:88, top:50, emoji:'🍺', tip:'The Barrel', type:'draw', mode:'core', coreAction:'barrel', customCards:[] },
       { id:'barcounter', left:18, top:34, emoji:'🃏', tip:'Pack of Cards', type:'draw', mode:'core', coreAction:'cards', customCards:[] },
       { id:'bookshelves', left:7, top:30, emoji:'📚', tip:'The Shelves', type:'game', mode:'core', coreAction:'books', customCards:[
-        { id:'book_1', icon:'📕', text:'House Rules', sub:'Read aloud a fresh rule for the room. The table must obey it until the next shelf pick.' },
-        { id:'book_2', icon:'📘', text:'Blue Velvet', sub:'Choose someone to answer a question truthfully or take a drink.' },
-        { id:'book_3', icon:'📗', text:'The Green Ledger', sub:'Nominate a player to collect a debt: they hand out 2 fingers between the table.' },
-        { id:'book_4', icon:'📙', text:'Amber Folio', sub:'Everyone at the table toasts together, then the picker chooses who drinks again.' },
-        { id:'book_5', icon:'📓', text:'Black Record', sub:'Reveal a brief secret, confession, or suspicious fact. Refuse and drink.' },
-        { id:'book_6', icon:'📔', text:'The Quiet Almanac', sub:'Name a topic. Everyone must contribute one word in turn. First stumble drinks.' },
-        { id:'book_7', icon:'📖', text:'The Lantern Chronicle', sub:'Describe a suspicious event from tonight. The table decides whether it sounds true.' },
-        { id:'book_8', icon:'📒', text:'The Brass Ledger', sub:'Choose two players. One must praise the other, or both drink.' },
-        { id:'book_9', icon:'🗞️', text:'The Evening Sheet', sub:'Invent tonight’s headline for the pub. Worst one drinks.' },
-        { id:'book_10', icon:'📚', text:'The Stacked Tomes', sub:'Pick a category. Go around the table naming examples until someone fails.' }
+        { id:'book_1', icon:'📕', text:'The First Ember', sub:'Tell where you came from and one thing you left behind. Declare a custom of your people. Anyone who breaks it drinks 1 finger.' },
+        { id:'book_2', icon:'📘', text:'The Mirror With No Mercy', sub:'Choose someone. Ask about their past. They answer honestly or drink 2 fingers. If they answer, you drink 1.' },
+        { id:'book_3', icon:'📗', text:'The Debt That Walks', sub:'Name a player. They must declare who here owes them and why. They assign 2 fingers between those involved.' },
+        { id:'book_4', icon:'📙', text:'The Last Warm Night', sub:'All drink together. Beforehand, each shares a brief moment life was better. Then drink 1 finger. Choose one to drink again.' },
+        { id:'book_5', icon:'📓', text:'The Whispered Truth', sub:'Reveal something questionable you have done or would do. Refuse and drink 2 fingers. If told, the table decides if they believe you.' },
+        { id:'book_6', icon:'📔', text:'The Broken Proverb', sub:'Build a proverb one word at a time. First mistake drinks 1 finger. If the final saying is poor, everyone drinks. Example: "Gold shouts loudest when honour is gone."' },
+        { id:'book_7', icon:'📖', text:'The Thing You Noticed', sub:'Describe something strange from tonight and why only you saw it. If the table doubts you, drink 2 fingers.' },
+        { id:'book_8', icon:'📒', text:'The Praise You Didn’t Mean', sub:'Choose two players. One must convincingly praise the other. If it feels false, both drink 1 finger.' },
+        { id:'book_9', icon:'🗞️', text:'The Ragged Sheet', sub:'Create a headline for tonight and add your involvement. Worst one drinks 2 fingers.' },
+        { id:'book_10', icon:'📚', text:'The Chain of Names', sub:'Pick a category. Go around naming examples and how you encountered one. Fail or repeat, drink 1 finger.' },
+        { id:'book_11', icon:'📜', text:'Scrap of Goblin Verse', sub:'Create a goblin haiku. Worst one drinks 1 finger. Example: "Bent crown muddy feet, he bit the hand took the throne, now all bite like him."' },
+        { id:'book_12', icon:'👑', text:'How the Goblin Took the Crown', sub:'Tell a short tale of a goblin rising to power. Assign 1 or 2 fingers to those who helped or betrayed him.' },
+        { id:'book_13', icon:'🍷', text:'The Cup and the Saying', sub:'Speak a piece of wisdom. If accepted, all drink 1 finger. If rejected, you drink 2. Example: "Better a stolen crown than an empty head."' }
+]
+]
       ] },
       { id:'armwrestle', left:45, top:60, emoji:'💪', tip:'Arm Wrestle', type:'draw', mode:'core', coreAction:'armwrestle', customCards:[] },
       { id:'barstools', left:24, top:50, emoji:'🪑', tip:'The Hot Seat', type:'draw', mode:'core', coreAction:'hotseat', customCards:[
@@ -3852,9 +3857,9 @@
     }
     function openBossBattleModal(spot){
       const boss = {
-        name:'The Lantern Warden',
+        name:'Krenco',
         icon:'👹',
-        intro:'The seal snaps. Smoke rolls across the floor and a tavern-haunting brute rises out of the lock box, furious and hungry.',
+        intro:'Krenco enters the room.',
         maxHp:140,
         hp:140
       };
