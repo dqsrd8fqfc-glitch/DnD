@@ -6,50 +6,92 @@
   <title>The Crooked Crown</title>
   <style>
     :root{
-      --gold:#f5c842;
-      --dark:#1a1008;
-      --mid:#26180a;
-      --border:#6b4010;
-      --text:#e8d5a3;
-      --muted:#a07840;
-      --shadow:0 18px 40px rgba(0,0,0,.45);
-      --glow:0 0 0 1px rgba(245,200,66,.18), 0 12px 28px rgba(0,0,0,.32);
+      --gold:#d4b44f;
+      --acid:#95b84a;
+      --acid-bright:#bfd96a;
+      --ember:#b4562c;
+      --dark:#0f1208;
+      --mid:#1d2312;
+      --border:#5f6a2e;
+      --border-soft:rgba(191,217,106,.18);
+      --text:#e7ddb4;
+      --muted:#99a36d;
+      --panelTop:rgba(53,61,27,.94);
+      --panelBottom:rgba(24,17,9,.98);
+      --shadow:0 22px 44px rgba(0,0,0,.48);
+      --glow:0 0 0 1px rgba(191,217,106,.14), 0 18px 32px rgba(0,0,0,.34);
+      --skew:16px;
     }
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
       margin:0;
-      font-family:Georgia,serif;
+      font-family:"Palatino Linotype","Book Antiqua",Georgia,serif;
       color:var(--text);
       background:
-        radial-gradient(circle at top, rgba(245,200,66,.08), transparent 34%),
-        linear-gradient(180deg, #2f1c0d 0%, #170d06 40%, #120904 100%);
+        radial-gradient(circle at top, rgba(149,184,74,.18), transparent 28%),
+        radial-gradient(circle at 85% 18%, rgba(180,86,44,.18), transparent 24%),
+        linear-gradient(180deg, #2b3416 0%, #16190d 38%, #0c0f08 100%);
+      position:relative;
+      overflow-x:hidden;
+    }
+    body::before,
+    body::after{
+      content:'';
+      position:fixed;
+      inset:auto;
+      pointer-events:none;
+      z-index:0;
+    }
+    body::before{
+      left:-6vw;
+      top:10vh;
+      width:28vw;
+      height:28vw;
+      background:radial-gradient(circle, rgba(191,217,106,.08), rgba(191,217,106,0) 72%);
+      filter:blur(10px);
+    }
+    body::after{
+      right:-10vw;
+      bottom:-6vh;
+      width:34vw;
+      height:26vw;
+      background:
+        radial-gradient(circle at center, rgba(180,86,44,.14), rgba(180,86,44,0) 66%);
+      filter:blur(16px);
     }
     button,input,textarea,select{font:inherit;max-width:100%}
     button{
       border:1px solid var(--border);
-      background:linear-gradient(180deg,#4d2d10,#2b1708);
+      background:
+        linear-gradient(180deg, rgba(191,217,106,.08), rgba(0,0,0,0)),
+        linear-gradient(180deg,#485223,#272d13 56%, #171b0d 100%);
       color:var(--text);
-      border-radius:10px;
+      border-radius:12px 8px 13px 9px;
       cursor:pointer;
       padding:8px 12px;
       line-height:1.2;
+      box-shadow:0 8px 16px rgba(0,0,0,.22), inset 0 1px 0 rgba(255,255,255,.04);
+      text-shadow:0 1px 0 rgba(0,0,0,.35);
     }
-    button:hover{filter:brightness(1.08)}
+    button:hover{filter:brightness(1.08);transform:translateY(-1px)}
     button:disabled{opacity:.5;cursor:not-allowed;filter:none}
     input,textarea,select{
       width:100%;
-      border:1px solid #7d5320;
-      background:#140b05;
+      border:1px solid rgba(125,151,64,.45);
+      background:rgba(12,16,8,.88);
       color:var(--text);
-      border-radius:8px;
+      border-radius:10px 8px 11px 7px;
       padding:8px 10px;
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.03);
     }
     textarea{min-height:90px;resize:vertical}
     .page{
       max-width:1500px;
       margin:0 auto;
       padding:18px;
+      position:relative;
+      z-index:1;
     }
     .intro{
       margin:0 0 16px;
@@ -104,11 +146,12 @@
       border:0;
       border-radius:0;
       background:transparent;
-      font-size:clamp(28px,4vw,42px);
+      font-size:clamp(30px,4.4vw,48px);
       font-weight:700;
-      letter-spacing:.02em;
-      color:var(--gold);
-      text-shadow:0 0 12px rgba(245,200,66,.25);
+      letter-spacing:.05em;
+      text-transform:uppercase;
+      color:#eef0be;
+      text-shadow:0 0 14px rgba(191,217,106,.2), 0 2px 0 rgba(0,0,0,.45);
       box-shadow:none;
     }
     .pubNameInput:focus{
@@ -127,8 +170,10 @@
       margin:0 0 14px;
       padding:10px 12px;
       border:1px solid var(--border);
-      border-radius:14px;
-      background:linear-gradient(180deg, rgba(48,29,13,.95), rgba(24,12,5,.95));
+      border-radius:16px 12px 18px 10px;
+      background:
+        linear-gradient(180deg, rgba(191,217,106,.06), rgba(0,0,0,0)),
+        linear-gradient(180deg, rgba(60,70,30,.96), rgba(24,18,10,.98));
       box-shadow:var(--shadow);
       overflow:auto;
     }
@@ -140,9 +185,11 @@
       flex:0 0 auto;
     }
     .initiativeBar .label{
-      color:var(--gold);
+      color:#eef0be;
       font-weight:700;
       white-space:nowrap;
+      letter-spacing:.08em;
+      text-transform:uppercase;
     }
     .initiativeTrack{
       display:flex;
@@ -158,8 +205,8 @@
       gap:8px;
       padding:6px 10px;
       border-radius:999px;
-      border:1px solid rgba(245,200,66,.18);
-      background:rgba(255,218,140,.06);
+      border:1px solid var(--border-soft);
+      background:rgba(149,184,74,.08);
       white-space:nowrap;
     }
     .initNavBtn{
@@ -170,13 +217,13 @@
       min-width:40px;
       padding:6px 0;
       border-radius:999px;
-      border:1px solid rgba(245,200,66,.18);
-      background:rgba(255,218,140,.06);
+      border:1px solid var(--border-soft);
+      background:rgba(149,184,74,.08);
       line-height:1;
     }
     .initChip.active{
-      background:linear-gradient(180deg,#6a4214,#38210c);
-      box-shadow:0 0 0 1px rgba(245,200,66,.35);
+      background:linear-gradient(180deg,#61732d,#313a19);
+      box-shadow:0 0 0 1px rgba(191,217,106,.34), 0 10px 18px rgba(0,0,0,.24);
     }
     .mapCol{flex:1;min-width:0}
     .iconBtn{
@@ -282,19 +329,35 @@
       resize:vertical;
     }
     .panel{
-      background:linear-gradient(180deg, rgba(45,28,13,.96), rgba(23,12,5,.96));
+      background:
+        linear-gradient(145deg, rgba(191,217,106,.05), rgba(0,0,0,0) 32%),
+        linear-gradient(180deg, var(--panelTop), var(--panelBottom));
       border:1px solid var(--border);
-      border-radius:16px;
+      border-radius:18px 13px 20px 11px;
       box-shadow:var(--shadow);
       overflow:hidden;
+      position:relative;
+    }
+    .panel::before{
+      content:'';
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(125deg, rgba(255,255,255,.03), transparent 24%),
+        repeating-linear-gradient(135deg, rgba(255,255,255,.015) 0 2px, rgba(0,0,0,0) 2px 11px);
+      pointer-events:none;
     }
     .panel h2{
       margin:0;
       padding:12px 14px 8px;
-      color:var(--gold);
+      color:#edf1b6;
       font-size:18px;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+      position:relative;
+      z-index:1;
     }
-    .panelBody{padding:0 14px 14px}
+    .panelBody{padding:0 14px 14px;position:relative;z-index:1}
     .panelBody > *{min-width:0}
     .row2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
     .tiny{font-size:12px;color:var(--muted)}
@@ -311,11 +374,12 @@
       position:relative;
       min-height:clamp(420px,78vh,900px);
       border:1px solid var(--border);
-      border-radius:18px;
+      border-radius:22px 16px 24px 14px;
       overflow:hidden;
       background:
-        radial-gradient(circle at 30% 20%, rgba(245,200,66,.12), transparent 28%),
-        linear-gradient(180deg, #322012, #120803);
+        radial-gradient(circle at 24% 22%, rgba(149,184,74,.14), transparent 26%),
+        radial-gradient(circle at 80% 18%, rgba(180,86,44,.13), transparent 24%),
+        linear-gradient(180deg, #30391a, #18150d);
       box-shadow:var(--shadow);
       touch-action:none;
       user-select:none;
@@ -345,12 +409,12 @@
       gap:14px;
       text-align:center;
       padding:24px;
-      border:2px dashed rgba(245,200,66,.35);
-      background:rgba(16,8,4,.6);
+      border:2px dashed rgba(191,217,106,.35);
+      background:rgba(12,15,8,.72);
       z-index:7;
     }
-    #loadOverlay.drag{background:rgba(45,26,10,.82)}
-    #loadOverlay h3{margin:0;font-size:28px;color:var(--gold)}
+    #loadOverlay.drag{background:rgba(52,66,24,.88)}
+    #loadOverlay h3{margin:0;font-size:28px;color:#eef0be;letter-spacing:.05em;text-transform:uppercase}
     #loadOverlay p{margin:0;max-width:520px;color:var(--muted)}
     #hotspotLayer,#annotationLayer,#tokenLayer,#spotlightLayer{
       position:absolute;
@@ -366,9 +430,9 @@
       height:130px;
       border-radius:999px;
       margin:-65px 0 0 -65px;
-      background:radial-gradient(circle, rgba(245,200,66,.26) 0%, rgba(245,200,66,.12) 35%, rgba(245,200,66,0) 72%);
-      border:1px solid rgba(245,200,66,.45);
-      box-shadow:0 0 24px rgba(245,200,66,.28);
+      background:radial-gradient(circle, rgba(191,217,106,.28) 0%, rgba(149,184,74,.14) 35%, rgba(149,184,74,0) 72%);
+      border:1px solid rgba(191,217,106,.42);
+      box-shadow:0 0 24px rgba(149,184,74,.24);
     }
     .hotspot{
       position:absolute;
@@ -376,13 +440,15 @@
       height:44px;
       padding:0;
       transform:translate(-50%,-50%);
-      border-radius:999px;
+      border-radius:13px 18px 15px 20px;
       display:flex;
       align-items:center;
       justify-content:center;
-      background:rgba(30,14,4,.78);
-      border:2px solid rgba(245,200,66,.95);
-      box-shadow:0 0 0 0 rgba(245,200,66,.55);
+      background:
+        linear-gradient(180deg, rgba(191,217,106,.08), rgba(0,0,0,0)),
+        rgba(31,23,10,.92);
+      border:2px solid rgba(191,217,106,.88);
+      box-shadow:0 0 0 0 rgba(191,217,106,.4);
       animation:pulse 2s infinite;
       font-size:18px;
       line-height:1;
@@ -398,7 +464,7 @@
       left:50%;
       transform:translateX(-50%);
       white-space:nowrap;
-      background:rgba(18,10,4,.92);
+      background:rgba(12,16,8,.96);
       border:1px solid var(--border);
       color:var(--text);
       border-radius:8px;
@@ -410,9 +476,9 @@
     }
     .hotspot:hover::after{opacity:1}
     @keyframes pulse{
-      0%{box-shadow:0 0 0 0 rgba(245,200,66,.4)}
-      70%{box-shadow:0 0 0 14px rgba(245,200,66,0)}
-      100%{box-shadow:0 0 0 0 rgba(245,200,66,0)}
+      0%{box-shadow:0 0 0 0 rgba(191,217,106,.34)}
+      70%{box-shadow:0 0 0 14px rgba(191,217,106,0)}
+      100%{box-shadow:0 0 0 0 rgba(191,217,106,0)}
     }
     .token{
       position:absolute;
@@ -453,8 +519,8 @@
       font-size:12px;
       padding:3px 7px;
       border-radius:999px;
-      background:rgba(18,9,4,.92);
-      border:1px solid rgba(245,200,66,.28);
+      background:rgba(12,16,8,.94);
+      border:1px solid rgba(191,217,106,.26);
       white-space:nowrap;
       max-width:120px;
       overflow:hidden;
@@ -488,8 +554,8 @@
     .playerAdder{
       margin-top:10px;
       border:1px solid rgba(245,200,66,.14);
-      border-radius:12px;
-      background:rgba(255,219,142,.04);
+      border-radius:15px 10px 16px 11px;
+      background:rgba(149,184,74,.05);
       overflow:hidden;
     }
     .playerAdder summary{
@@ -517,8 +583,8 @@
     .npcAdder{
       margin-top:10px;
       border:1px solid rgba(245,200,66,.14);
-      border-radius:12px;
-      background:rgba(255,219,142,.04);
+      border-radius:15px 10px 16px 11px;
+      background:rgba(149,184,74,.05);
       overflow:hidden;
     }
     .npcAdder summary{
@@ -567,9 +633,9 @@
       display:grid;
       gap:6px;
       align-items:center;
-      background:rgba(255,219,142,.05);
-      border:1px solid rgba(245,200,66,.14);
-      border-radius:12px;
+      background:rgba(149,184,74,.05);
+      border:1px solid rgba(191,217,106,.14);
+      border-radius:14px 10px 15px 9px;
       padding:6px;
     }
     .prow{grid-template-columns:auto minmax(0,1fr) repeat(5,24px)}
@@ -627,8 +693,8 @@
       gap:4px;
       padding:4px 8px;
       border-radius:999px;
-      border:1px solid rgba(245,200,66,.18);
-      background:rgba(255,218,140,.06);
+      border:1px solid rgba(191,217,106,.18);
+      background:rgba(149,184,74,.08);
       font-size:12px;
     }
     .roundBtns,.deckGrid,.controlStack{display:grid;gap:8px;min-width:0}
@@ -648,7 +714,9 @@
       display:none;
       align-items:center;
       justify-content:center;
-      background:rgba(0,0,0,.7);
+      background:
+        radial-gradient(circle at top, rgba(149,184,74,.12), transparent 28%),
+        rgba(0,0,0,.78);
       z-index:40;
       padding:18px;
     }
@@ -656,9 +724,11 @@
       width:min(820px,100%);
       max-height:90vh;
       overflow:auto;
-      background:linear-gradient(180deg,#2d1b0c,#170d06);
+      background:
+        linear-gradient(145deg, rgba(191,217,106,.05), rgba(0,0,0,0) 30%),
+        linear-gradient(180deg,#36411b,#17170d);
       border:1px solid var(--border);
-      border-radius:18px;
+      border-radius:20px 14px 22px 12px;
       padding:18px;
       box-shadow:var(--shadow);
     }
@@ -669,11 +739,13 @@
     .modalCard h3,.modalCard h4{color:var(--gold);margin:.2em 0}
     .modalCard p{line-height:1.45}
     .revealCard{
-      border:1px solid rgba(245,200,66,.22);
-      border-radius:14px;
+      border:1px solid rgba(191,217,106,.22);
+      border-radius:16px 12px 18px 11px;
       padding:14px;
       margin-top:14px;
-      background:rgba(255,216,122,.05);
+      background:
+        linear-gradient(180deg, rgba(149,184,74,.06), rgba(0,0,0,0)),
+        rgba(21,18,10,.7);
     }
     .wheelFlash{
       display:grid;
@@ -1157,31 +1229,34 @@
       text-overflow:ellipsis;
     }
     .bookshelf{
-      display:flex;
-      align-items:flex-end;
+      display:grid;
+      grid-template-columns:repeat(var(--book-count, 6), minmax(54px, 1fr));
+      align-items:end;
       gap:10px;
       min-height:260px;
       margin-top:16px;
       padding:22px 18px 18px;
       overflow-x:auto;
-      border-radius:18px;
-      border:1px solid rgba(245,200,66,.18);
+      border-radius:20px 14px 22px 13px;
+      border:1px solid rgba(191,217,106,.18);
       background:
-        linear-gradient(180deg, rgba(82,49,20,.4), rgba(32,18,8,.16) 18%, rgba(20,11,5,.4) 19%, rgba(20,11,5,.4) 100%),
-        linear-gradient(180deg, rgba(44,24,10,.96), rgba(20,10,4,.98));
-      box-shadow:inset 0 -10px 0 rgba(101,62,28,.8), inset 0 -14px 0 rgba(34,18,8,.9);
+        linear-gradient(180deg, rgba(108,86,34,.42), rgba(37,27,14,.18) 18%, rgba(18,18,8,.48) 19%, rgba(18,18,8,.48) 100%),
+        linear-gradient(180deg, rgba(52,60,25,.96), rgba(17,16,8,.98));
+      box-shadow:inset 0 -10px 0 rgba(90,72,27,.8), inset 0 -14px 0 rgba(30,26,12,.92);
     }
     .bookPick{
-      flex:0 0 auto;
-      width:58px;
+      width:100%;
       min-height:170px;
       padding:14px 8px 12px;
       border-radius:10px 10px 6px 6px;
-      border:1px solid rgba(255,245,220,.16);
+      border:1px solid rgba(238,240,190,.14);
       display:flex;
       align-items:center;
       justify-content:center;
-      background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(0,0,0,.12)), var(--bookColor, #6c4322);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.08), rgba(0,0,0,.18)),
+        repeating-linear-gradient(180deg, rgba(0,0,0,.07) 0 6px, rgba(255,255,255,.02) 6px 12px),
+        var(--bookColor, #6c4322);
       color:#f8edd0;
       box-shadow:0 10px 18px rgba(0,0,0,.22);
       text-align:center;
@@ -1197,7 +1272,7 @@
       filter:brightness(1.08);
     }
     .bookPick.active{
-      box-shadow:0 0 0 2px rgba(245,200,66,.42), 0 14px 24px rgba(0,0,0,.28);
+      box-shadow:0 0 0 2px rgba(191,217,106,.42), 0 14px 24px rgba(0,0,0,.28);
       filter:brightness(1.1);
     }
     .bookPick small{
@@ -1211,10 +1286,10 @@
       margin-top:16px;
     }
     .conversationPrompt{
-      border:1px solid rgba(245,200,66,.18);
-      border-radius:16px;
+      border:1px solid rgba(191,217,106,.18);
+      border-radius:18px 13px 19px 11px;
       padding:16px;
-      background:linear-gradient(180deg, rgba(72,42,20,.62), rgba(25,13,6,.88));
+      background:linear-gradient(180deg, rgba(69,84,31,.54), rgba(24,17,9,.9));
     }
     .conversationChoices{
       display:grid;
@@ -1223,7 +1298,7 @@
     .conversationChoice{
       text-align:left;
       padding:12px 14px;
-      border-radius:14px;
+      border-radius:16px 11px 17px 10px;
     }
     .mazeBoard{
       display:grid;
@@ -1233,9 +1308,9 @@
     }
     .mazeCell{
       aspect-ratio:1;
-      border-radius:12px;
-      border:1px solid rgba(245,200,66,.14);
-      background:linear-gradient(180deg, rgba(8,6,6,.98), rgba(0,0,0,1));
+      border-radius:14px 10px 15px 8px;
+      border:1px solid rgba(191,217,106,.14);
+      background:linear-gradient(180deg, rgba(12,15,10,.98), rgba(0,0,0,1));
       display:grid;
       place-items:center;
       color:#7f6a46;
@@ -1258,7 +1333,7 @@
       color:#ffd0c8;
     }
     .mazeCell.current{
-      box-shadow:0 0 0 2px rgba(245,200,66,.42), 0 0 24px rgba(245,200,66,.18);
+      box-shadow:0 0 0 2px rgba(191,217,106,.42), 0 0 24px rgba(191,217,106,.18);
       color:#fff3c5;
     }
     .mazeCell.revealed.exit{
@@ -1301,9 +1376,11 @@
     .adminShell{
       width:min(1280px,100%);
       height:min(92vh,920px);
-      background:linear-gradient(180deg,#2d1b0c,#170d06);
+      background:
+        linear-gradient(145deg, rgba(191,217,106,.05), rgba(0,0,0,0) 30%),
+        linear-gradient(180deg,#31391a,#17160d);
       border:1px solid var(--border);
-      border-radius:18px;
+      border-radius:20px 14px 22px 12px;
       box-shadow:var(--shadow);
       display:grid;
       grid-template-rows:auto auto 1fr;
@@ -1315,10 +1392,10 @@
       gap:12px;
       align-items:center;
       padding:14px 16px;
-      border-bottom:1px solid rgba(245,200,66,.15);
-      background:rgba(255,212,111,.03);
+      border-bottom:1px solid rgba(191,217,106,.15);
+      background:rgba(191,217,106,.04);
     }
-    .adminHead h3{margin:0;color:var(--gold)}
+    .adminHead h3{margin:0;color:#eef0be;letter-spacing:.08em;text-transform:uppercase}
     .adminSubhead{flex-wrap:wrap}
     .adminSubhead .grow{flex:1;min-width:220px}
     .adminMain{
@@ -1327,27 +1404,30 @@
       min-height:0;
     }
     .adminNav{
-      border-right:1px solid rgba(245,200,66,.15);
+      border-right:1px solid rgba(191,217,106,.15);
       overflow:auto;
       padding:12px;
-      background:rgba(0,0,0,.12);
+      background:rgba(0,0,0,.18);
     }
     .tabBtn{
       width:100%;
       text-align:left;
       margin-bottom:8px;
-      border-radius:12px;
+      border-radius:14px 10px 15px 9px;
     }
-    .tabBtn.active{background:linear-gradient(180deg,#6a4214,#38210c)}
+    .tabBtn.active{
+      background:linear-gradient(180deg,#61732d,#313a19);
+      box-shadow:0 0 0 1px rgba(191,217,106,.34);
+    }
     .adminContent{
       overflow:auto;
       padding:16px;
     }
     .editGrid{display:grid;gap:14px}
     .editCard,.runCard{
-      background:rgba(255,219,142,.05);
-      border:1px solid rgba(245,200,66,.14);
-      border-radius:14px;
+      background:rgba(149,184,74,.05);
+      border:1px solid rgba(191,217,106,.14);
+      border-radius:16px 11px 18px 10px;
       padding:14px;
       display:grid;
       gap:10px;
@@ -1375,8 +1455,10 @@
       font-size:22px;
       line-height:1;
       text-align:center;
-      border-radius:12px;
-      background:rgba(255,215,120,.08);
+      border-radius:14px 10px 15px 9px;
+      background:
+        linear-gradient(180deg, rgba(191,217,106,.12), rgba(0,0,0,0)),
+        rgba(149,184,74,.08);
       overflow:hidden;
     }
     .subtle{color:var(--muted);font-size:13px}
@@ -1396,9 +1478,9 @@
       position:fixed;
       display:none;
       width:260px;
-      background:#1b1007;
+      background:linear-gradient(180deg,#2d3518,#17160d);
       border:1px solid var(--border);
-      border-radius:14px;
+      border-radius:16px 11px 18px 10px;
       padding:10px;
       z-index:60;
       box-shadow:var(--shadow);
@@ -1413,9 +1495,9 @@
     .adminBtns{display:flex;gap:8px;flex-wrap:wrap}
     .hidden{display:none !important}
     .hotspotPool{
-      border:1px solid rgba(245,200,66,.14);
-      border-radius:12px;
-      background:rgba(255,219,142,.03);
+      border:1px solid rgba(191,217,106,.14);
+      border-radius:14px 10px 15px 9px;
+      background:rgba(149,184,74,.03);
       overflow:hidden;
     }
     .hotspotPool summary{
@@ -1439,7 +1521,7 @@
     .hotspotPool[open] summary::after{content:'−'}
     .hotspotPoolBody{
       padding:0 12px 12px;
-      border-top:1px solid rgba(245,200,66,.1);
+      border-top:1px solid rgba(191,217,106,.1);
       display:grid;
       gap:8px;
     }
@@ -1475,9 +1557,9 @@
       min-width:36px;
       min-height:36px;
       padding:8px 10px;
-      border-radius:14px;
-      border:1px solid rgba(245,200,66,.35);
-      background:rgba(23,11,5,.86);
+      border-radius:16px 11px 18px 10px;
+      border:1px solid rgba(191,217,106,.35);
+      background:rgba(19,20,10,.9);
       box-shadow:var(--glow);
       color:var(--text);
       display:flex;
@@ -1492,12 +1574,12 @@
       border-radius:999px;
       display:grid;
       place-items:center;
-      background:rgba(245,200,66,.22);
-      color:var(--gold);
+      background:rgba(191,217,106,.22);
+      color:#eef0be;
       font-size:12px;
       flex:none;
     }
-    .annotation.active{outline:2px solid rgba(245,200,66,.55)}
+    .annotation.active{outline:2px solid rgba(191,217,106,.55)}
     @media (max-width: 1100px){
       .layout{flex-direction:column}
       .introGrid{grid-template-columns:1fr}
@@ -1715,66 +1797,66 @@
       { icon:'🍺', text:'Drink 3 fingers', sub:'A deeper draw from the glass.' },
       { icon:'💀', text:'Down it', sub:'Finish what you are holding.' },
       { icon:'⏳', text:'Five seconds', sub:'Drink continuously for a slow count of five.' },
-      { icon:'🌊', text:'Waterfall', sub:'Everyone drinks. You may stop only when the player before you does.' },
+      { icon:'🌊', text:'Waterfall', sub:'Everyone drinks together on camera. The DM calls the stop.' },
       { icon:'📅', text:'Years under Grok', sub:'Drink 1 finger for every year you have known Grok, to a maximum of 6.' },
       { icon:'🍷', text:'Last orders', sub:'Take 2 fingers now and 2 more when the next card is revealed.' }
     ];
     const NOMS = [
       { icon:'👉', text:'Nominate 1 person', sub:'Choose who takes the penalty.' },
       { icon:'👉', text:'Nominate 2 fingers', sub:'Choose who drinks 2 fingers.' },
-      { icon:'↩️', text:'Left neighbour', sub:'The player on your left drinks.' },
-      { icon:'↪️', text:'Right neighbour', sub:'The player on your right drinks.' },
-      { icon:'🥂', text:'Social nomination', sub:'Pick someone to clink glasses with and both drink.' },
+      { icon:'↩️', text:'Previous in order', sub:'The player before you in initiative drinks.' },
+      { icon:'↪️', text:'Next in order', sub:'The player after you in initiative drinks.' },
+      { icon:'🥂', text:'Social nomination', sub:'Pick someone to toast on camera with and both drink.' },
       { icon:'🤫', text:'Whisper to the DM', sub:'Name a player. The DM gives them a private instruction.' },
       { icon:'🔁', text:'Swap penalties', sub:'Pick two players. The next penalty meant for one goes to the other.' }
     ];
     const SOCIALS = [
       { icon:'🥂', text:'SOCIAL!', sub:'Everyone drinks together.' },
-      { icon:'🌊', text:'Waterfall', sub:'The whole den becomes a river.' },
+      { icon:'🌊', text:'Waterfall', sub:'Everyone drinks together until the DM calls the stop.' },
       { icon:'📜', text:'Make a Rule', sub:'Invent a rule that lasts until replaced.' },
       { icon:'🫱', text:'Pair Up', sub:'Choose a drinking partner until the next social card.' },
-      { icon:'🤐', text:'Silence Rule', sub:'No one may speak for one minute. First to break it drinks.' },
+      { icon:'🤐', text:'Silence Rule', sub:'No one may speak in voice chat for one minute. First to break it drinks.' },
       { icon:'🎁', text:'The Gift Round', sub:'Each player assigns 1 finger to someone else.' }
     ];
     const HOTSEATS = [
-      { icon:'🪑', name:'Paranoia', desc:'Ask a paranoid question, point secretly, and let the table stew in the answer.' },
+      { icon:'🪑', name:'Paranoia', desc:'Ask a paranoid question, message the DM your answer privately, and let the group stew in it.' },
       { icon:'⛪', name:'The Confession Box', desc:'A player must reveal a minor truth or drink.' },
-      { icon:'🎤', name:'Press Conference', desc:'One player answers rapid-fire questions for thirty seconds.' },
-      { icon:'⭐', name:'Rate the Table', desc:'Choose a category and rank everyone. Defend your choices.' },
-      { icon:'🕵️', name:'The Interrogation', desc:'The table asks one player questions until someone catches them contradicting themselves.' }
+      { icon:'🎤', name:'Press Conference', desc:'One player answers rapid-fire questions in voice chat for thirty seconds.' },
+      { icon:'⭐', name:'Rate the Call', desc:'Choose a category and rank everyone in the call. Defend your choices.' },
+      { icon:'🕵️', name:'The Interrogation', desc:'The group asks one player questions until someone catches them contradicting themselves.' }
     ];
     const CHALLENGES = [
       { icon:'⚔️', name:'Head to Head', desc:'Pick an opponent. The loser of the DM-set challenge drinks 2 fingers.' },
-      { icon:'💪', name:'Arm Wrestle', desc:'Quick match. Loser drinks.' },
-      { icon:'👀', name:'Staring Contest', desc:'First blink loses.' },
+      { icon:'💪', name:'Dice Duel', desc:'Both players roll. Lower result drinks.' },
+      { icon:'👀', name:'Face-Off', desc:'Both players lock eyes on camera while the group counts. First to laugh or look away drinks.' },
       { icon:'🪙', name:'Coin Toss', desc:'Call it in the air. Wrong call drinks.' },
-      { icon:'👍', name:'Thumb Master', desc:'Become Thumb Master until someone notices and joins you.' },
-      { icon:'⚡', name:'Reflex Test', desc:'Last hand on the table drinks 2.' }
+      { icon:'👍', name:'Signal Master', desc:'Choose a simple hand sign on camera. Last person to copy it drinks.' },
+      { icon:'⚡', name:'Reflex Test', desc:'The DM names an object or emote. Last person to type it in chat drinks 2.' }
     ];
     const CURSES = [
       { icon:'🕯️', name:'The Dripping Wax', desc:'You must drink with your little finger raised until the curse is broken.' },
       { icon:'📛', name:'The Old Name', desc:'You may not say anyone’s real name for ten minutes.' },
       { icon:'🔗', name:'The Binding', desc:'Choose another player. Your fates are linked: when one drinks, both drink 1.' },
       { icon:'👁️', name:'The Watcher’s Mark', desc:'The DM may call on you to narrate one eerie detail whenever they wish.' },
-      { icon:'🤫', name:'The Silence Hex', desc:'You may speak only in whispers until the next hotspot.' },
+      { icon:'🤫', name:'The Silence Hex', desc:'You may only type in chat, not speak in voice, until the next hotspot.' },
       { icon:'🍀', name:'The Borrowed Luck', desc:'Reroll or redraw once, then drink 2 when you do.' }
     ];
     const GAMES = [
       { icon:'📈', name:'Higher or Lower', desc:'Guess higher or lower than the last number.' },
-      { icon:'🎵', name:'Hum That Tune', desc:'Hum a song. First correct guess chooses who drinks.' },
+      { icon:'🎵', name:'Name That Tune', desc:'Post or say three words from a song. First correct guess chooses who drinks.' },
       { icon:'🃏', name:'Two Truths One Lie', desc:'Tell three statements. Table finds the lie.' },
       { icon:'🫵', name:'Most Likely To…', desc:'Vote together. The winner drinks.' },
       { icon:'🔤', name:'Backwards Alphabet', desc:'Take turns reciting the alphabet backwards.' },
       { icon:'2️⃣1️⃣', name:'Twenty-One', desc:'Count to 21 with changing rules.' },
       { icon:'🙅', name:'Never Have I Ever', desc:'One quick round.' },
       { icon:'❓', name:'Pub Quiz Lightning', desc:'DM asks a snap question.' },
-      { icon:'🥃', name:'Fingers on the Glass', desc:'Last finger touching drinks.' },
+      { icon:'🥃', name:'Hands Off the Keyboard', desc:'The DM counts down. Last person to type "done" in chat drinks.' },
       { icon:'🛢', name:'Truth or Barrel', desc:'Choose confession or consequence.' },
       { icon:'🦆', name:'Fuzzy Duck', desc:'Classic verbal chaos.' },
       { icon:'📚', name:'Categories', desc:'Choose a category. First stumble drinks.' },
       { icon:'⚫', name:'Ibble Dibble', desc:'Add a mark for each failure and announce it with dignity.' },
-      { icon:'🎭', name:'Impressions', desc:'Do an impression. Table decides if it lands.' },
-      { icon:'✏️', name:'Pub Pictionary', desc:'Draw badly. Guess quickly.' },
+      { icon:'🎭', name:'Impressions', desc:'Do a voice or text impression. The group decides if it lands.' },
+      { icon:'✏️', name:'Goblin Sketch', desc:'Describe something in five words. First correct guess wins.' },
       { icon:'🔮', name:'Psychic Pub', desc:'Predict a choice before it is made.' }
     ];
     const ITEMS = [
@@ -1796,18 +1878,18 @@
 
     const HOTSPOTS = [
       { id:'wheel', left:38, top:21, emoji:'🎡', tip:'Spinning Wheel', type:'wheel', mode:'core', coreAction:'wheel', customCards:[] },
-      { id:'jukebox', left:70, top:21, emoji:'🎵', tip:'The Jukebox', type:'draw', mode:'core', coreAction:'jukebox', customCards:[
-        { id:'jukebox_1', icon:'🎶', text:'Hum That Tune', sub:'Someone starts humming a song. First correct guess nominates who drinks 2 fingers.' },
-        { id:'jukebox_2', icon:'🎤', text:'One Word Lyrics', sub:'Go around the table saying one word of a song each. First person to stall drinks.' },
-        { id:'jukebox_3', icon:'📣', text:'Finish The Chorus', sub:'A player sings the first line of a chorus. Someone else must finish it or drink 2 fingers.' },
-        { id:'jukebox_4', icon:'🕺', text:'Genre Swap', sub:'Name a song and perform it in the wrong genre. If the table does not like it, drink 1 finger.' },
-        { id:'jukebox_5', icon:'💃', text:'Dance Floor Dare', sub:'Pick a player to give their best dance move for five seconds or drink.' }
+      { id:'jukebox', left:70, top:21, emoji:'🎸', tip:'The Ukulele', type:'draw', mode:'core', coreAction:'jukebox', customCards:[
+        { id:'jukebox_1', icon:'🎶', text:'Name That Tune', sub:'Someone gives three words from a song. First correct guess nominates who drinks 2 fingers.' },
+        { id:'jukebox_2', icon:'🎤', text:'One Word Lyrics', sub:'Go around the call typing or saying one word of a song each. First person to stall drinks.' },
+        { id:'jukebox_3', icon:'📣', text:'Finish The Chorus', sub:'A player posts or says the first line of a chorus. Someone else must finish it or drink 2 fingers.' },
+        { id:'jukebox_4', icon:'🕺', text:'Genre Swap', sub:'Name a song and pitch it in the wrong genre. If the group does not like it, drink 1 finger.' },
+        { id:'jukebox_5', icon:'💃', text:'Camera Dare', sub:'Pick a player to do a dramatic five-second webcam pose or drink.' }
       ] },
       { id:'hatch', left:11, top:82, emoji:'⬇', tip:'Cellar Hatch', type:'draw', mode:'core', coreAction:'cellar', customCards:[] },
       { id:'fireplace', left:83, top:55, emoji:'🔥', tip:'The Fireplace', type:'draw', mode:'core', coreAction:'fireplace', customCards:[
-        { id:'fire_1', icon:'🔥', text:'Staring Contest', sub:'The fire demands a staring contest. First blink drinks 2 fingers.' },
+        { id:'fire_1', icon:'🔥', text:'Face-Off', sub:'Two players lock eyes on camera. First to laugh or look away drinks 2 fingers.' },
         { id:'fire_2', icon:'🗣️', text:'Campfire Confession', sub:'Each player says one suspicious truth. First refusal drinks 2 fingers.' },
-        { id:'fire_3', icon:'🎭', text:'Shadow Charades', sub:'Act something out in the firelight. The table gets one guess each.' },
+        { id:'fire_3', icon:'🎭', text:'Shadow Charades', sub:'Mime something on camera. The group gets one guess each.' },
         { id:'fire_4', icon:'🔮', text:'Ember Prophecy', sub:'Predict who will trigger the next hotspot. Wrong guess drinks 2 fingers.' }
       ] },
       { id:'altar', left:88, top:27, emoji:'🗿', tip:'The Goblin Idol', type:'draw', mode:'core', coreAction:'shrine', customCards:[
@@ -1827,7 +1909,7 @@
         { id:'chest_6', icon:'📜', text:'Sealed note', sub:'Read the note aloud and nominate who it most resembles to drink.' }
       ] },
       { id:'lockbox', left:63, top:17, emoji:'🔐', tip:'The Lock Box', type:'draw', mode:'core', coreAction:'lockbox', customCards:[] },
-      { id:'table', left:36, top:59, emoji:'🍾', tip:'Spin the Squig Bottle', type:'draw', mode:'core', coreAction:'bottle', customCards:[] },
+      { id:'table', left:36, top:59, emoji:'🍾', tip:'Spin the Squig Selector', type:'draw', mode:'core', coreAction:'bottle', customCards:[] },
       { id:'barrel', left:88, top:50, emoji:'🍺', tip:'The Barrel', type:'draw', mode:'core', coreAction:'barrel', customCards:[] },
       { id:'barcounter', left:18, top:34, emoji:'🃏', tip:'The Crooked Deck', type:'draw', mode:'core', coreAction:'cards', customCards:[] },
       { id:'bookshelves', left:7, top:30, emoji:'📚', tip:'The Lore Shelf', type:'game', mode:'core', coreAction:'books', customCards:[
@@ -1835,26 +1917,26 @@
         { id:'book_2', icon:'📘', text:'The Mirror With No Mercy', sub:'Choose someone. Ask about their past. They answer honestly or drink 2 fingers. If they answer, you drink 1.' },
         { id:'book_3', icon:'📗', text:'The Debt That Walks', sub:'Name a player. They must declare who here owes them and why. They assign 2 fingers between those involved.' },
         { id:'book_4', icon:'📙', text:'The Last Warm Night', sub:'All drink together. Beforehand, each shares a brief moment life was better. Then drink 1 finger. Choose one to drink again.' },
-        { id:'book_5', icon:'📓', text:'The Whispered Truth', sub:'Reveal something questionable you have done or would do. Refuse and drink 2 fingers. If told, the table decides if they believe you.' },
-        { id:'book_6', icon:'📖', text:'The Thing You Noticed', sub:'Describe something strange from tonight and why only you saw it. If the table doubts you, drink 2 fingers.' },
+        { id:'book_5', icon:'📓', text:'The Whispered Truth', sub:'Reveal something questionable you have done or would do. Refuse and drink 2 fingers. If told, the group decides if they believe you.' },
+        { id:'book_6', icon:'📖', text:'The Thing You Noticed', sub:'Describe something strange from tonight and why only you saw it. If the group doubts you, drink 2 fingers.' },
         { id:'book_7', icon:'📒', text:'The Praise You Didn’t Mean', sub:'Choose two players. One must convincingly praise the other. If it feels false, both drink 1 finger.' },
         
       ] },
-      { id:'armwrestle', left:45, top:60, emoji:'💪', tip:'Arm Wrestle', type:'draw', mode:'core', coreAction:'armwrestle', customCards:[] },
+      { id:'armwrestle', left:45, top:60, emoji:'💪', tip:'Dice Duel', type:'draw', mode:'core', coreAction:'armwrestle', customCards:[] },
       { id:'barstools', left:24, top:50, emoji:'🪑', tip:'The Hot Seat', type:'draw', mode:'core', coreAction:'hotseat', customCards:[
-        { id:'hotseat_1', icon:'❓', text:'Three Questions', sub:'The table gets three quick questions. Any hesitation, contradiction, or refusal means they drink.' },
+        { id:'hotseat_1', icon:'❓', text:'Three Questions', sub:'The group gets three quick questions. Any hesitation, contradiction, or refusal means they drink.' },
         { id:'hotseat_2', icon:'🤐', text:'Confession', sub:'They must confess a minor truth about tonight, or drink 2 fingers.' },
-        { id:'hotseat_3', icon:'🫵', text:'Most Likely To', sub:'They name who at the table is most likely to fit a prompt, and defend it immediately.' },
-        { id:'hotseat_4', icon:'⚡', text:'Challenge', sub:'The table gives them a fast task. If they fail or refuse, they drink.' }
+        { id:'hotseat_3', icon:'🫵', text:'Most Likely To', sub:'They name who in the call is most likely to fit a prompt, and defend it immediately.' },
+        { id:'hotseat_4', icon:'⚡', text:'Challenge', sub:'The group gives them a fast voice or chat task. If they fail or refuse, they drink.' }
       ] },
       { id:'sidetable', left:53, top:44, emoji:'🎲', tip:'Dice Game', type:'draw', mode:'core', coreAction:'dice', customCards:[] },
-      { id:'sofas', left:66, top:70, emoji:'🛋️', tip:'The Sofas', type:'draw', mode:'core', coreAction:'sofa', customCards:[
-        { id:'sofa_1', icon:'🗣️', text:'Town gossip', sub:'They pull you straight into the latest rumour.\nThey ask who told you that.\nThe gossip turns out to be about someone at the table.' },
-        { id:'sofa_2', icon:'🍻', text:'Friendly toast', sub:'They raise their glasses and make space for you.\nYour toast is met with polite silence.\nSomeone demands you prove you mean it with a drink.' },
-        { id:'sofa_3', icon:'😬', text:'Awkward silence', sub:'The silence breaks and everyone laughs in relief.\nNobody rescues you and the silence gets worse.\nOne of them asks you a brutally direct question.' },
-        { id:'sofa_4', icon:'🔥', text:'Heated debate', sub:'You pick the right side and win them over.\nYou back the wrong person and get instantly challenged.\nThe debate grows and the whole den starts listening.' },
-        { id:'sofa_5', icon:'❓', text:'Personal question', sub:'They answer honestly and the mood softens.\nThey dodge it and turn the question back on you.\nThe question lands badly and the atmosphere chills.' },
-        { id:'sofa_6', icon:'🎭', text:'Bold story', sub:'Your story kills and the whole sofa crowd is hooked.\nThey think you are exaggerating and start heckling.\nSomeone interrupts with a better story and steals the moment.' }
+      { id:'sofas', left:66, top:70, emoji:'👺', tip:'The Goblin Gang', type:'draw', mode:'core', coreAction:'sofa', customCards:[
+        { id:'sofa_1', icon:'🗣️', text:'Gang Rumour', sub:'They drag you into the latest spiteful rumour.\nThey demand who told you first.\nThe rumour turns out to involve someone in the call.' },
+        { id:'sofa_2', icon:'🍻', text:'Suspicious Welcome', sub:'They make space and wait for you to prove yourself.\nYour greeting lands well and they cheer.\nYour greeting falls flat and they make you drink for the effort.' },
+        { id:'sofa_3', icon:'😬', text:'Bad Feeling', sub:'The silence breaks and they cackle at your discomfort.\nNobody helps you and the mood gets worse.\nOne of them leans in with a nasty direct question.' },
+        { id:'sofa_4', icon:'🔥', text:'Gang Argument', sub:'You pick the right side and win them over.\nYou back the wrong goblin and get challenged immediately.\nThe whole den starts listening to see if you survive it.' },
+        { id:'sofa_5', icon:'❓', text:'Tribe Question', sub:'They answer honestly and the mood softens.\nThey dodge it and turn the question back on you.\nThe question lands badly and everyone gets colder.' },
+        { id:'sofa_6', icon:'🎭', text:'Big Goblin Tale', sub:'Your tale kills and the whole gang is hooked.\nThey think you are exaggerating and start heckling.\nSomeone interrupts with a better tale and steals the moment.' }
       ] }
     ];
     const REMOVED_DEFAULT_HOTSPOTS = ['dartboard', 'lanterns', 'mantelpiece'];
@@ -1888,7 +1970,7 @@
       { id:'wheel_2', text:'Mini Game!', color:'#183a20', icon:'🎮', action:'game', sub:'Reveal a game prompt.' },
       { id:'wheel_3', text:'Nominate 2 fngrs', color:'#3a0e50', icon:'👉', action:'nominate', sub:'Reveal a nomination result.' },
       { id:'wheel_4', text:'Mystery Item', color:'#503010', icon:'🎁', action:'item', sub:'Reveal a mysterious item.' },
-      { id:'wheel_5', text:'SOCIAL!', color:'#1a3a50', icon:'🥂', action:'social', sub:'Reveal a social table effect.' },
+      { id:'wheel_5', text:'SOCIAL!', color:'#1a3a50', icon:'🥂', action:'social', sub:'Reveal a social group effect.' },
       { id:'wheel_6', text:'Hot Seat', color:'#4a2808', icon:'🪑', action:'hotseat', sub:'Reveal a hot-seat challenge.' },
       { id:'wheel_7', text:'DOWN IT!', color:'#5a0808', icon:'💀', action:'down', sub:'Everyone drinks together.' },
       { id:'wheel_8', text:'Curse', color:'#2a0a3a', icon:'🕯️', action:'curse', sub:'Reveal a curse.' },
@@ -2193,13 +2275,13 @@
       if (spot.coreAction === 'jukebox') {
         return {
           editable:true,
-          summaryPrefix:'Jukebox tracks',
-          empty:'Add musical drinking prompts for the jukebox.',
-          addLabel:'＋ Add jukebox track',
+          summaryPrefix:'Ukulele tunes',
+          empty:'Add musical drinking prompts for the ukulele.',
+          addLabel:'＋ Add ukulele tune',
           titlePlaceholder:'Track or prompt',
-          detailPlaceholder:'What the jukebox demands',
+          detailPlaceholder:'What the ukulele demands',
           defaultIcon:'🎵',
-          defaultTitle:'New jukebox track',
+          defaultTitle:'New ukulele tune',
           defaultDetail:'Describe the musical challenge this track triggers.'
         };
       }
@@ -2276,7 +2358,7 @@
     function coreHotspotLabel(action){
       return {
         wheel:'Spinning wheel',
-        jukebox:'Jukebox game',
+        jukebox:'Ukulele game',
         lockbox:'Lock box boss fight',
         shrine:'Goblin idol ritual',
         cellar:'Cellar maze',
@@ -3162,6 +3244,7 @@
     }
     document.addEventListener('pointermove', (e) => {
       if (!drag) return;
+      if (drag.type === 'hotspot' && !hotspotEditMode) return;
       const dxPct = ((e.clientX - drag.sm.x) / drag.rect.width) * 100;
       const dyPct = ((e.clientY - drag.sm.y) / drag.rect.height) * 100;
       if (Math.abs(dxPct) > 0.4 || Math.abs(dyPct) > 0.4) drag.moved = true;
@@ -3185,9 +3268,12 @@
       } else if (releasedType === 'hotspot') {
         const spot = currentHotspots().find((item) => item.id === releasedId);
         if (spot) {
-          spot.left = left;
-          spot.top = top;
-          if (!drag.moved) handleHotspot(spot);
+          if (hotspotEditMode && drag.moved) {
+            spot.left = left;
+            spot.top = top;
+          } else {
+            handleHotspot(spot);
+          }
         }
         refreshHotspotEditors();
       }
@@ -3209,7 +3295,7 @@
         if (h.hidden) return;
         const btn = document.createElement('button');
         btn.type = 'button';
-        btn.className = 'hotspot' + (hotspotCreateMode ? ' creating' : '');
+        btn.className = 'hotspot' + (hotspotCreateMode ? ' creating' : '') + (hotspotEditMode ? ' editing' : '');
         btn.dataset.tip = h.tip;
         btn.dataset.id = h.id;
         btn.style.left = h.left + '%';
@@ -3217,6 +3303,7 @@
         btn.textContent = h.emoji;
         btn.addEventListener('pointerdown', (e) => {
           if (e.button !== 0) return;
+          if (!hotspotEditMode) return;
           const rect = els.mapC.getBoundingClientRect();
           drag = {
             el:btn,
@@ -3230,6 +3317,11 @@
           btn.setPointerCapture(e.pointerId);
           e.preventDefault();
           e.stopPropagation();
+        });
+        btn.addEventListener('click', (e) => {
+          if (hotspotEditMode) return;
+          e.preventDefault();
+          handleHotspot(h);
         });
         els.hotspotLayer.appendChild(btn);
       });
@@ -3798,24 +3890,24 @@
       let queue = shuffleIndices(prompts.map((_, index) => index));
       openModal(`
         <div class="modalCard">
-          <h3>🎵 ${escapeHtml(spot.tip)}</h3>
-          <p>The jukebox crackles to life and throws out a musical drinking challenge.</p>
+          <h3>🎸 ${escapeHtml(spot.tip)}</h3>
+          <p>The ukulele gets plucked and throws out a musical drinking challenge.</p>
           <div class="modalTools">
-            <button id="jukeboxPlayBtn" type="button">Play next track</button>
+            <button id="jukeboxPlayBtn" type="button">Play next tune</button>
           </div>
-          <div id="jukeboxResult" class="revealCard">Press play to hear what the jukebox demands.</div>
+          <div id="jukeboxResult" class="revealCard">Press play to hear what the ukulele demands.</div>
         </div>
       `);
       const resultEl = document.getElementById('jukeboxResult');
       document.getElementById('jukeboxPlayBtn').addEventListener('click', () => {
         if (!prompts.length) {
-          resultEl.innerHTML = '<h4>No tracks loaded</h4><p>Add jukebox prompts in the hotspot editor first.</p>';
+          resultEl.innerHTML = '<h4>No tunes loaded</h4><p>Add ukulele prompts in the hotspot editor first.</p>';
           return;
         }
         if (!queue.length) queue = shuffleIndices(prompts.map((_, index) => index));
         const prompt = prompts[queue.shift()];
-        addLog('Core hotspot', 'Jukebox chose ' + (prompt.text || 'a track') + '.');
-        resultEl.innerHTML = `<h4>${escapeHtml((prompt.icon || '🎶') + ' ' + (prompt.text || 'Jukebox track'))}</h4><p>${escapeHtml(prompt.sub || 'The jukebox crackles, but gives no clear instruction.')}</p>`;
+        addLog('Core hotspot', 'Ukulele chose ' + (prompt.text || 'a tune') + '.');
+        resultEl.innerHTML = `<h4>${escapeHtml((prompt.icon || '🎶') + ' ' + (prompt.text || 'Ukulele tune'))}</h4><p>${escapeHtml(prompt.sub || 'The ukulele twangs, but gives no clear instruction.')}</p>`;
       });
     }
     function openLockboxModal(spot){
@@ -3925,7 +4017,7 @@
                   <input id="bossRollInput" type="number" min="1" max="20" placeholder="Enter roll">
                   <button id="bossResolveRollBtn" type="button">Resolve roll</button>
                 </div>
-                <div class="tiny">Roll-based attacks resolve from a physical d20. Drink-based attacks happen immediately when chosen.</div>
+                <div class="tiny">Roll-based attacks resolve from any d20 roller. Drink-based attacks happen immediately when chosen.</div>
               </div>
             </div>
           </div>
@@ -4039,7 +4131,7 @@
           dealDamage(damage, `${fighter.name} uses ${attack.name}`, `${fighter.name} spends ${attack.cost} finger${attack.cost === 1 ? '' : 's'} and slams the monster for ${damage}.`);
           return;
         }
-        actionResultEl.innerHTML = `<h4>${escapeHtml(fighter.name)} prepares ${escapeHtml(attack.name)}</h4><p>Roll a d20 physically, then enter it below. This attack costs ${attack.cost} finger${attack.cost === 1 ? '' : 's'} if it is attempted.</p>`;
+        actionResultEl.innerHTML = `<h4>${escapeHtml(fighter.name)} prepares ${escapeHtml(attack.name)}</h4><p>Roll a d20, then enter it below. This attack costs ${attack.cost} finger${attack.cost === 1 ? '' : 's'} if it is attempted.</p>`;
       };
       document.getElementById('bossResolveRollBtn').addEventListener('click', () => {
         if (!pendingAttack || pendingAttack.mode !== 'roll') {
@@ -4265,12 +4357,12 @@
       openModal(`
         <div class="modalCard">
           <h3>🪑 ${escapeHtml(spot.tip)}</h3>
-          <p>Someone takes the hot seat. Pick who is under pressure, then let the seat decide the test.</p>
+          <p>Someone is under pressure. Pick who it is, then let the challenge decide the test.</p>
           <div class="modalTools">
-            <select id="hotSeatTarget">${(contenders.length ? contenders : [{ id:'seat', name:'Whoever sat down' }]).map((entry) => `<option value="${escapeAttr(entry.id)}">${escapeHtml(entry.name)}</option>`).join('')}</select>
+            <select id="hotSeatTarget">${(contenders.length ? contenders : [{ id:'seat', name:'Whoever drew it' }]).map((entry) => `<option value="${escapeAttr(entry.id)}">${escapeHtml(entry.name)}</option>`).join('')}</select>
             <button id="hotSeatPromptBtn" type="button">Start Hot Seat</button>
           </div>
-          <div id="hotSeatResult" class="revealCard">Choose who is in the chair.</div>
+          <div id="hotSeatResult" class="revealCard">Choose who is under pressure.</div>
         </div>
       `);
       const targetEl = document.getElementById('hotSeatTarget');
@@ -4280,7 +4372,7 @@
           resultEl.innerHTML = '<h4>No hot seat prompts</h4><p>Add them in the hotspot editor first.</p>';
           return;
         }
-        const target = contenders.find((entry) => entry.id === targetEl.value) || { name:'Whoever sat down' };
+        const target = contenders.find((entry) => entry.id === targetEl.value) || { name:'Whoever drew it' };
         const prompt = prompts[Math.floor(Math.random() * prompts.length)];
         addLog('Core hotspot', 'Hot Seat: ' + target.name + ' drew ' + (prompt.text || 'a prompt') + '.');
         resultEl.innerHTML = `
@@ -4395,7 +4487,7 @@
         <div class="modalCard">
           <h3>📚 ${escapeHtml(spot.tip)}</h3>
           <p>Choose a worn volume from the shelf and reveal the tale, truth, or demand hidden inside.</p>
-          <div class="bookshelf" id="bookshelfChoices">
+          <div class="bookshelf" id="bookshelfChoices" style="--book-count:${books.length};">
             ${books.map((book, index) => `
               <button type="button" class="bookPick" data-book-id="${escapeAttr(book.id)}" style="--bookColor:${palette[index % palette.length]};min-height:${170 + ((index % 4) * 18)}px">
                 <span>${escapeHtml(book.text || 'Untitled')}</span>
@@ -4423,7 +4515,7 @@
         openModal(`
           <div class="modalCard">
             <h3>🛋️ ${escapeHtml(spot.tip)}</h3>
-            <p>There is a group of friends deep in conversation. Pick the theme, roll physically, then enter the result here. Higher numbers land better.</p>
+            <p>There is a group of friends deep in conversation. Pick the theme, roll however your group is handling dice, then enter the result here. Higher numbers land better.</p>
             <div class="conversationChoices" id="sofaChoices">
               ${customScenes.map((scene, index) => `<button type="button" class="conversationChoice" data-choice="${index}">${escapeHtml((scene.icon || '🛋️') + ' ' + (scene.text || 'Untitled scene'))}</button>`).join('')}
             </div>
@@ -4470,35 +4562,35 @@
       }
       const scenes = [
         {
-          intro:'A knot of goblins on the sofas glance up as you drift over. There is space for you if you can find the right opening line.',
+          intro:'A goblin gang sprawls across the sofas like they own the corner. They look up together as you approach, judging whether you belong.',
           choices:[
-            { text:'Ask what scrap you have missed tonight.', good:'They laugh and pull you straight into the gossip. Pick someone to avoid their next drink.', bad:'You interrupt a tense story. They stare until you awkwardly back out and drink 2 fingers.' },
-            { text:'Offer a toast to new friends and soft seats.', good:'They cheer the toast and wave you in. Everyone on the sofas takes a friendly sip.', bad:'It lands too earnest and they roast you for it. You drink 1 finger for trying too hard.' },
-            { text:'Drop a bold rumour and see who bites.', good:'They love the chaos and start piling on their own rumours. Nominate someone to drink 2 fingers.', bad:'The rumour is clearly nonsense. The group turns on you and you drink 3 fingers.' }
+            { text:'Ask what scrap you have missed tonight.', good:'They laugh and drag you straight into gang gossip. Pick someone to avoid their next drink.', bad:'You interrupt a tense story. The whole gang stares until you back out and drink 2 fingers.' },
+            { text:'Offer a crooked toast to the gang.', good:'They cheer and wave you in. Everyone in the gang takes a friendly sip.', bad:'It lands too earnest and they roast you for it. You drink 1 finger for trying too hard.' },
+            { text:'Drop a bold rumour and see who bites.', good:'They love the chaos and start piling on their own rumours. Nominate someone to drink 2 fingers.', bad:'The rumour is clearly nonsense. The gang turns on you and you drink 3 fingers.' }
           ]
         },
         {
-          intro:'Three goblins are halfway through a heated debate. If you jump in, you might become the hero of the circle or the next punchline.',
+          intro:'Three goblins in the gang are halfway through a heated argument over some old slight. If you jump in, you might become a hero or the next joke.',
           choices:[
-            { text:'Back the loudest goblin confidently.', good:'You read the den perfectly and win instant approval. Choose someone to hand out 2 fingers.', bad:'You backed the wrong side immediately. Drink 2 fingers.' },
-            { text:'Play peacemaker and calm everyone down.', good:'The mood softens and the whole group nods. Nobody drinks this turn.', bad:'They were enjoying the argument. They boo your diplomacy and you drink 1 finger.' },
+            { text:'Back the loudest goblin confidently.', good:'You read the gang perfectly and win instant approval. Choose someone to hand out 2 fingers.', bad:'You backed the wrong side immediately. Drink 2 fingers.' },
+            { text:'Play peacemaker and calm everyone down.', good:'The mood softens and the whole gang nods. Nobody drinks this turn.', bad:'They were enjoying the argument. They boo your diplomacy and you drink 1 finger.' },
             { text:'Challenge them to prove it with a story.', good:'They love it and start trading ridiculous tales. Pick a player to tell the next story or drink.', bad:'The challenge dies flat. You get stuck performing instead and drink 2 fingers.' }
           ]
         },
         {
-          intro:'The sofa crowd look like old raiders. They make space, but only if you can match their energy.',
+          intro:'This goblin gang looks like old raiders with long memories. They make space, but only if you can match their energy.',
           choices:[
             { text:'Lead with a self-deprecating joke.', good:'They crack up and welcome you in. Take a social sip together.', bad:'The joke clunks badly. You have to rescue it with 2 fingers of drink.' },
-            { text:'Ask for their most suspicious bar story.', good:'They pile in with stories and you become part of the circle. Nominate someone to share next.', bad:'They suspect you are fishing too hard. Drink 1 finger and try again later.' },
-            { text:'Act like you already belong there.', good:'The confidence works. The group folds you into the conversation immediately.', bad:'It comes off arrogant. The sofa crowd send you away to drink 3 fingers.' }
+            { text:'Ask for their most suspicious raid story.', good:'They pile in with stories and you become part of the gang for a moment. Nominate someone to share next.', bad:'They suspect you are fishing too hard. Drink 1 finger and try again later.' },
+            { text:'Act like you already belong there.', good:'The confidence works. The gang folds you into the conversation immediately.', bad:'It comes off arrogant. The gang sends you away to drink 3 fingers.' }
           ]
         }
       ];
       const scene = scenes[Math.floor(Math.random() * scenes.length)];
       openModal(`
         <div class="modalCard">
-          <h3>🛋️ ${escapeHtml(spot.tip)}</h3>
-          <p>A cluster of goblins is deep in conversation. Pick how you try to join in.</p>
+          <h3>👺 ${escapeHtml(spot.tip)}</h3>
+          <p>You have wandered into a goblin gang’s corner. Pick how you try to survive the encounter.</p>
           <div class="conversationScene">
             <div class="conversationPrompt">
               <strong>Scene</strong>
@@ -4517,7 +4609,7 @@
           const choice = scene.choices[Number(btn.dataset.choice)];
           if (!choice) return;
           const success = Math.random() < 0.5;
-          addLog('Core hotspot', 'Sofa conversation: ' + choice.text + ' -> ' + (success ? 'went well' : 'went badly') + '.');
+          addLog('Core hotspot', 'Goblin gang encounter: ' + choice.text + ' -> ' + (success ? 'went well' : 'went badly') + '.');
           resultEl.innerHTML = `<h4>${success ? 'It goes well' : 'It goes badly'}</h4><p>${escapeHtml(success ? choice.good : choice.bad)}</p>`;
         });
       });
@@ -4546,7 +4638,7 @@
           addLog('Core hotspot', 'Fireplace chose ' + (response.text || 'a firelit challenge') + '.');
           document.getElementById('fireplaceResult').innerHTML = `
             <h4>${escapeHtml((response.icon || '🔥') + ' ' + (response.text || 'Firelight Challenge'))}</h4>
-            <p>${escapeHtml(response.sub || 'The fire wants the table to play.')}</p>
+            <p>${escapeHtml(response.sub || 'The fire wants the group to play.')}</p>
           `;
           return;
         }
@@ -4554,7 +4646,7 @@
         addLog('Core hotspot', 'Fireplace chose ' + (game.name || 'a game') + '.');
         document.getElementById('fireplaceResult').innerHTML = `
           <h4>${escapeHtml((game.icon || '🎮') + ' ' + (game.name || 'Mystery Game'))}</h4>
-          <p>${escapeHtml(game.desc || 'The fire wants the table to play.')}</p>
+          <p>${escapeHtml(game.desc || 'The fire wants the group to play.')}</p>
         `;
       });
     }
@@ -4569,15 +4661,15 @@
       openModal(`
         <div class="modalCard">
           <h3>💪 ${escapeHtml(spot.tip)}</h3>
-          <p>Two contenders square up and each roll a d20 strength check. Highest roll wins.</p>
+          <p>Two contenders face off and each roll a d20. Highest result wins.</p>
           <div class="row2">
             <select id="armLeft">${fallbackRoster.map((entry) => `<option value="${escapeAttr(entry.id)}"${entry.id === leftId ? ' selected' : ''}>${escapeHtml(entry.name)}</option>`).join('')}</select>
             <select id="armRight">${fallbackRoster.map((entry) => `<option value="${escapeAttr(entry.id)}"${entry.id === rightId ? ' selected' : ''}>${escapeHtml(entry.name)}</option>`).join('')}</select>
           </div>
           <div class="modalTools">
-            <button id="armRollBtn" type="button">Roll Strength Checks</button>
+            <button id="armRollBtn" type="button">Roll Duel</button>
           </div>
-          <div id="armResult" class="revealCard">Choose the two arm wrestlers, then roll.</div>
+          <div id="armResult" class="revealCard">Choose the two duelists, then roll.</div>
         </div>
       `);
       const leftEl = document.getElementById('armLeft');
@@ -4587,7 +4679,7 @@
         leftId = leftEl.value;
         rightId = rightEl.value;
         if (leftId === rightId) {
-          resultEl.innerHTML = '<h4>Pick two different contenders</h4><p>The same person cannot wrestle themselves.</p>';
+          resultEl.innerHTML = '<h4>Pick two different contenders</h4><p>The same person cannot duel themselves.</p>';
           return;
         }
         const leftEntry = fallbackRoster.find((entry) => entry.id === leftId) || fallbackRoster[0];
@@ -4597,10 +4689,10 @@
         const leftRoll = 1 + Math.floor(Math.random() * 20);
         const rightRoll = 1 + Math.floor(Math.random() * 20);
         const winner = leftRoll === rightRoll ? '' : (leftRoll > rightRoll ? leftName : rightName);
-        addLog('Core hotspot', 'Arm Wrestle: ' + leftName + ' rolled ' + leftRoll + ', ' + rightName + ' rolled ' + rightRoll + '.');
+        addLog('Core hotspot', 'Dice Duel: ' + leftName + ' rolled ' + leftRoll + ', ' + rightName + ' rolled ' + rightRoll + '.');
         resultEl.innerHTML = `
           <h4>${escapeHtml(leftName)} ${leftRoll} vs ${escapeHtml(rightName)} ${rightRoll}</h4>
-          <p>${winner ? escapeHtml(winner) + ' wins the arm wrestle.' : 'Dead heat. Lock hands again and reroll.'}</p>
+          <p>${winner ? escapeHtml(winner) + ' wins the duel.' : 'Dead heat. Roll again.'}</p>
         `;
       });
     }
@@ -4621,8 +4713,8 @@
       }).join('');
       openModal(`
         <div class="modalCard">
-          <h3>🍾 Spin the Squig Bottle</h3>
-          <p>Spin the bottle and watch it snap toward a player. It will work through a shuffled order before repeating.</p>
+          <h3>🍾 Spin the Squig Selector</h3>
+          <p>Spin the selector and watch it snap toward a player. It will work through a shuffled order before repeating.</p>
           <div class="bottleArena">
             ${players.length ? seatMarkup : ''}
             <div id="bottleSpinner" class="bottleSpinner"></div>
@@ -4631,7 +4723,7 @@
           <div class="modalTools">
             <button id="bottleSpinBtn" type="button">Spin</button>
           </div>
-          <div id="bottleResult" class="revealCard">${players.length ? 'Everyone takes a cautious step back from the bottle.' : 'Add players first so the bottle has someone to choose.'}</div>
+          <div id="bottleResult" class="revealCard">${players.length ? 'The selector is ready to pick someone.' : 'Add players first so the selector has someone to choose.'}</div>
         </div>
       `);
       const bottleEl = document.getElementById('bottleSpinner');
@@ -4650,7 +4742,7 @@
         spinningBottle = true;
         clearActiveSeat();
         spinBtn.disabled = true;
-        resultEl.innerHTML = '<h4>Spinning...</h4><p>The bottle rattles across the tabletop.</p>';
+        resultEl.innerHTML = '<h4>Spinning...</h4><p>The selector whips around the roster.</p>';
         bottleEl.style.transform = `translateY(-50%) rotate(${bottleRotation}deg)`;
         const onDone = () => {
           bottleEl.removeEventListener('transitionend', onDone);
@@ -4658,8 +4750,8 @@
           spinBtn.disabled = false;
           const chosenSeat = document.querySelector(`.bottleSeat[data-player-id="${chosen.id}"]`);
           if (chosenSeat) chosenSeat.classList.add('active');
-          addLog('Core hotspot', 'Spin the Squig Bottle chose ' + chosen.name + '.');
-          resultEl.innerHTML = `<h4>${escapeHtml(chosen.name)}</h4><p>The bottle points their way.${queue.length ? ' ' + queue.length + ' players remain in this round.' : ' Everyone has been chosen once; the next spin starts a fresh shuffle.'}</p>`;
+          addLog('Core hotspot', 'Spin the Squig Selector chose ' + chosen.name + '.');
+          resultEl.innerHTML = `<h4>${escapeHtml(chosen.name)}</h4><p>The selector lands on them.${queue.length ? ' ' + queue.length + ' players remain in this round.' : ' Everyone has been chosen once; the next spin starts a fresh shuffle.'}</p>`;
         };
         bottleEl.addEventListener('transitionend', onDone, { once:true });
       });
@@ -4911,6 +5003,7 @@
           <div class="hotspotMetaRow">
             <h3>Hotspots On ${escapeHtml(currentMap() ? currentMap().name : 'Map')}</h3>
             <div class="smallActions tight">
+              <button type="button" data-act="move"${hotspotEditMode ? ' class="filterPill active"' : ''}>${hotspotEditMode ? 'Stop moving hotspots' : 'Move hotspots'}</button>
               <button type="button" data-act="add">Add hotspot on map</button>
             </div>
           </div>
@@ -4929,6 +5022,12 @@
       });
       tools.querySelector('[data-act="add"]').addEventListener('click', () => {
         addHotspotNow();
+      });
+      tools.querySelector('[data-act="move"]').addEventListener('click', () => {
+        hotspotEditMode = !hotspotEditMode;
+        hotspotCreateMode = false;
+        buildHotspots();
+        refreshHotspotEditors();
       });
       const sections = document.createElement('div');
       sections.className = 'hotspotSections';
