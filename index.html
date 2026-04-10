@@ -5512,12 +5512,14 @@
     }
 
     els.mapChooserBtn.addEventListener('click', openMapChooserModal);
-    els.pubNameInput.addEventListener('input', (e) => {
-      const nextName = e.target.value.trim();
-      pubName = nextName || 'The Crooked Crown';
-      renderPubName();
-      scheduleSave();
-    });
+    if (els.pubNameInput) {
+      els.pubNameInput.addEventListener('input', (e) => {
+        const nextName = e.target.value.trim();
+        pubName = nextName || 'The Crooked Crown';
+        renderPubName();
+        scheduleSave();
+      });
+    }
     els.mapSelect.addEventListener('change', (e) => switchMap(e.target.value));
     els.addMapBtn.addEventListener('click', addMap);
     els.renameMapBtn.addEventListener('click', renameMap);
