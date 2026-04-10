@@ -1915,12 +1915,12 @@
       ] },
       { id:'sidetable', left:53, top:44, emoji:'🎲', tip:'Dice Game', type:'draw', mode:'core', coreAction:'dice', customCards:[] },
       { id:'sofas', left:66, top:70, emoji:'👺', tip:'The Goblin Gang', type:'draw', mode:'core', coreAction:'sofa', customCards:[
-        { id:'sofa_1', icon:'🗣️', text:'Crew Gossip', sub:'They drag you into the latest whisper about the boss.\nThey demand who tipped you off.\nThe gossip turns out to involve someone on the call.' },
-        { id:'sofa_2', icon:'🪙', text:'Tribute Check', sub:'They make space and wait to see what you offer the crew.\nYour tribute or greeting lands well and they cheer.\nIt falls flat and they make you drink for wasting their time.' },
-        { id:'sofa_3', icon:'😬', text:'Bad Turf', sub:'The silence breaks and they cackle at your discomfort.\nNobody helps you and the mood gets uglier.\nOne of them leans in and asks what business you have on their turf.' },
-        { id:'sofa_4', icon:'🔥', text:'Crew Dispute', sub:'You back the right goblin and win the crew over.\nYou back the wrong goblin and get challenged immediately.\nThe whole den starts listening to see whether you survive the fallout.' },
-        { id:'sofa_5', icon:'👑', text:'Boss Question', sub:'They answer honestly and the mood softens.\nThey dodge it and turn the question back on you.\nThe question lands badly and everyone starts watching you like a snitch.' },
-        { id:'sofa_6', icon:'🗡️', text:'Mob Legend', sub:'Your tale kills and the whole crew is hooked.\nThey think you are exaggerating and start heckling.\nSomeone older interrupts with a nastier story and steals the moment.' }
+        { id:'sofa_1', icon:'💬', text:'Boss Whisper', sub:'They drag you into the latest whisper about who crossed the boss.\nThey demand who tipped you off.\nThe whisper turns out to involve someone on the call.' },
+        { id:'sofa_2', icon:'🪙', text:'Tribute Pile', sub:'They make space and wait to see what shinies or respect you offer the crew.\nYour tribute or greeting lands well and they cheer.\nIt falls flat and they make you drink for wasting their time.' },
+        { id:'sofa_3', icon:'🗡️', text:'Wrong Turf', sub:'The cackling dies and the whole gang watches you squirm.\nNobody helps you and the mood gets uglier.\nOne of them leans in and asks what business you have on their turf.' },
+        { id:'sofa_4', icon:'🔥', text:'Loot Squabble', sub:'You back the right goblin and win the crew over.\nYou back the wrong goblin and get challenged immediately.\nThe whole den starts listening to see whether you survive the fallout.' },
+        { id:'sofa_5', icon:'👑', text:'Boss Favour', sub:'They answer honestly and the mood softens.\nThey dodge it and turn the question back on you.\nThe question lands badly and everyone starts watching you like a snitch.' },
+        { id:'sofa_6', icon:'📜', text:'Raid Boast', sub:'Your tale kills and the whole crew is hooked.\nThey think you are exaggerating and start heckling.\nSomeone older interrupts with a nastier raid story and steals the moment.' }
       ] }
     ];
     const REMOVED_DEFAULT_HOTSPOTS = ['dartboard', 'lanterns', 'mantelpiece'];
@@ -3927,9 +3927,9 @@
     }
     function openBossBattleModal(spot){
       const boss = {
-        name:'The Crown Snatcher',
+        name:'Krenko',
         icon:'👹',
-        intro:'The seal snaps. Smoke rolls across the floor and a crown-mad brute rises out of the lock box, furious and hungry.',
+        intro:'Krenko enters the room.',
         maxHp:140,
         hp:140
       };
@@ -4078,7 +4078,7 @@
         hpFillEl.style.width = pct + '%';
         hpLabelEl.textContent = `${boss.hp} / ${boss.maxHp}`;
         if (boss.hp <= 0) {
-          actionResultEl.innerHTML = '<h4>The monster falls</h4><p>The Crown Snatcher crashes to the floor. The goblin bar survives the night.</p>';
+          actionResultEl.innerHTML = '<h4>The monster falls</h4><p>Krenko crashes to the floor. The goblin bar survives the night.</p>';
           winMountEl.innerHTML = `
             <div class="bossWin">
               <div class="icon">🏆</div>
@@ -4547,27 +4547,27 @@
       }
       const scenes = [
         {
-          intro:'A goblin mob sprawls across the corner like it owns the whole bar. They look up together as you approach, weighing whether you are worth hearing out.',
+          intro:'A goblin crew sprawls across the corner like it owns the whole bar. Stolen cups, bent cutlery, and a suspicious tribute pile sit between them as they size you up.',
           choices:[
-            { text:'Ask what trouble the crew has stirred up tonight.', good:'They laugh and drag you straight into mob gossip. Pick someone to avoid their next drink.', bad:'You interrupt a tense story. The whole crew stares until you back out and drink 2 fingers.' },
-            { text:'Offer a crooked toast to the boss and crew.', good:'They cheer and wave you in. Everyone in the mob takes a friendly sip.', bad:'It lands too earnest and they roast you for it. You drink 1 finger for trying too hard.' },
-            { text:'Drop a bold rumour about the crown and see who bites.', good:'They love the chaos and start piling on their own rumours. Nominate someone to drink 2 fingers.', bad:'The rumour is clearly nonsense. The mob turns on you and you drink 3 fingers.' }
+            { text:'Ask what trouble the crew has stirred up tonight.', good:'They laugh and drag you straight into goblin gossip. Pick someone to avoid their next drink.', bad:'You interrupt a tense story. The whole crew stares until you back out and drink 2 fingers.' },
+            { text:'Slide in with a crooked toast to the boss and crew.', good:'They cheer and wave you in. Everyone in the mob takes a friendly sip.', bad:'It lands too earnest and they roast you for it. You drink 1 finger for trying too hard.' },
+            { text:'Drop a rumour about missing loot and see who bites.', good:'They love the chaos and start piling on their own accusations. Nominate someone to drink 2 fingers.', bad:'The rumour is clearly nonsense. The mob turns on you and you drink 3 fingers.' }
           ]
         },
         {
-          intro:'Three goblins in the mob are halfway through a heated argument over rank, loot, and who gets heard by the boss. If you jump in, you might rise or get cut down.',
+          intro:'Three goblins in the mob are halfway through a heated argument over rank, loot, and who the boss trusts to carry messages. If you jump in, you might rise or get cut down.',
           choices:[
             { text:'Back the loudest goblin confidently.', good:'You read the mob perfectly and win instant approval. Choose someone to hand out 2 fingers.', bad:'You backed the wrong side immediately. Drink 2 fingers.' },
-            { text:'Offer to settle it like a proper crew dispute.', good:'The mood sharpens and the whole mob nods. Nobody drinks this turn.', bad:'They were enjoying the chaos. They boo your diplomacy and you drink 1 finger.' },
-            { text:'Demand they prove it with a story of the job.', good:'They love it and start trading ridiculous crew tales. Pick a player to tell the next story or drink.', bad:'The challenge dies flat. You get stuck performing instead and drink 2 fingers.' }
+            { text:'Offer to settle it like a proper goblin dispute.', good:'The mood sharpens and the whole mob nods. Nobody drinks this turn.', bad:'They were enjoying the chaos. They boo your diplomacy and you drink 1 finger.' },
+            { text:'Demand they prove it with a story from the last raid.', good:'They love it and start trading ridiculous crew tales. Pick a player to tell the next story or drink.', bad:'The challenge dies flat. You get stuck performing instead and drink 2 fingers.' }
           ]
         },
         {
-          intro:'This goblin mob looks like old raiders with long memories and sharp little grudges. They make space, but only if you carry yourself like you belong on their turf.',
+          intro:'This goblin mob looks like old raiders with long memories, sharp grudges, and quicker hands. They make space, but only if you carry yourself like you belong on their turf.',
           choices:[
-            { text:'Lead with a joke about owing tribute.', good:'They crack up and welcome you in. Take a social sip together.', bad:'The joke clunks badly. You have to rescue it with 2 fingers of drink.' },
-            { text:'Ask for their dirtiest crew story.', good:'They pile in with stories and you become part of the mob for a moment. Nominate someone to share next.', bad:'They suspect you are fishing too hard. Drink 1 finger and try again later.' },
-            { text:'Act like you already work for the boss.', good:'The confidence works. The mob folds you into the conversation immediately.', bad:'It comes off arrogant. The mob sends you away to drink 3 fingers.' }
+            { text:'Lead with a joke about paying tribute in bent copper.', good:'They crack up and welcome you in. Take a social sip together.', bad:'The joke clunks badly. You have to rescue it with 2 fingers of drink.' },
+            { text:'Ask for their dirtiest raid story.', good:'They pile in with stories and you become part of the mob for a moment. Nominate someone to share next.', bad:'They suspect you are fishing too hard. Drink 1 finger and try again later.' },
+            { text:'Act like you already run errands for the boss.', good:'The confidence works. The mob folds you into the conversation immediately.', bad:'It comes off arrogant. The mob sends you away to drink 3 fingers.' }
           ]
         }
       ];
@@ -4575,7 +4575,7 @@
       openModal(`
         <div class="modalCard">
           <h3>👺 ${escapeHtml(spot.tip)}</h3>
-          <p>You have wandered into a goblin mob’s corner. Pick how you try to survive the encounter.</p>
+          <p>You have wandered into a goblin crew’s corner. Pick how you try to survive the encounter.</p>
           <div class="conversationScene">
             <div class="conversationPrompt">
               <strong>Scene</strong>
