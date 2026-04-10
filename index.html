@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>The Crooked Lantern</title>
+  <title>The Crooked Crown</title>
   <style>
     :root{
       --gold:#f5c842;
@@ -1535,7 +1535,7 @@
 <body>
   <div class="page">
     <div class="pubName">
-      <input id="pubNameInput" class="pubNameInput" type="text" value="The Crooked Lantern" aria-label="Pub name">
+      <input id="pubNameInput" class="pubNameInput" type="text" value="The Crooked Crown" aria-label="Bar name">
     </div>
     <div class="initiativeBar">
       <div class="label">Initiative</div>
@@ -1550,14 +1550,14 @@
     <div class="layout">
       <div class="mapCol">
         <div id="mapC">
-          <img id="mapImg" alt="Pub map" src="https://dqsrd8fqfc-glitch.github.io/DnD/image.png">
+          <img id="mapImg" alt="Pub map">
           <div id="bannerMask"></div>
           <div id="hotspotLayer"></div>
           <div id="annotationLayer"></div>
           <div id="tokenLayer"></div>
           <div id="loadOverlay">
-            <h3>Load Your Pub Map</h3>
-            <p>Use the map button beside save to choose the default Crooked Lantern map or upload your own image. You can also drag an image straight onto this area.</p>
+            <h3>Load Your Goblin Bar Map</h3>
+            <p>Use the map button beside save to choose the default Crooked Crown map or upload your own image. You can also drag an image straight onto this area.</p>
             <input id="mapFile" type="file" accept="image/*" class="hidden">
           </div>
         </div>
@@ -1673,7 +1673,7 @@
         <div class="grow">
           <input id="adminSearch" placeholder="Search cards, NPCs, effects, log">
         </div>
-        <div class="tiny" id="adminHint">Live controls for tonight on the left, deeper content editing on the right.</div>
+        <div class="tiny" id="adminHint">Live goblin-bar controls on the left, deeper content editing on the right.</div>
       </div>
       <div class="adminMain">
         <nav class="adminNav" id="adminTabs"></nav>
@@ -1711,12 +1711,12 @@
     ];
 
     const DRINKS = [
-      { icon:'🍺', text:'Drink 2 fingers', sub:'A steady pull while the room watches.' },
+      { icon:'🍺', text:'Drink 2 fingers', sub:'A steady pull while the den watches.' },
       { icon:'🍺', text:'Drink 3 fingers', sub:'A deeper draw from the glass.' },
       { icon:'💀', text:'Down it', sub:'Finish what you are holding.' },
       { icon:'⏳', text:'Five seconds', sub:'Drink continuously for a slow count of five.' },
       { icon:'🌊', text:'Waterfall', sub:'Everyone drinks. You may stop only when the player before you does.' },
-      { icon:'📅', text:'Years with the landlord', sub:'Drink 1 finger for every year you have known Arthur, to a maximum of 6.' },
+      { icon:'📅', text:'Years under Grok', sub:'Drink 1 finger for every year you have known Grok, to a maximum of 6.' },
       { icon:'🍷', text:'Last orders', sub:'Take 2 fingers now and 2 more when the next card is revealed.' }
     ];
     const NOMS = [
@@ -1730,7 +1730,7 @@
     ];
     const SOCIALS = [
       { icon:'🥂', text:'SOCIAL!', sub:'Everyone drinks together.' },
-      { icon:'🌊', text:'Waterfall', sub:'The room becomes a river.' },
+      { icon:'🌊', text:'Waterfall', sub:'The whole den becomes a river.' },
       { icon:'📜', text:'Make a Rule', sub:'Invent a rule that lasts until replaced.' },
       { icon:'🫱', text:'Pair Up', sub:'Choose a drinking partner until the next social card.' },
       { icon:'🤐', text:'Silence Rule', sub:'No one may speak for one minute. First to break it drinks.' },
@@ -1783,7 +1783,7 @@
       { icon:'🏏', name:'The Lucky Cue', desc:'Challenge someone immediately.' },
       { icon:'🍻', name:'The Mystery Pint', desc:'Swap drinks with another player.' },
       { icon:'🟤', name:'The Damp Coaster', desc:'Redirect one penalty to another player.' },
-      { icon:'📒', name:'The Beermat Ledger', desc:'The DM reveals one hidden secret from the room.' },
+      { icon:'📒', name:'The Grease Ledger', desc:'The DM reveals one hidden secret from the bar.' },
       { icon:'🪙', name:'The Old Coin', desc:'Take a free spin of the wheel.' },
       { icon:'🥔', name:'The Last Crisp', desc:'Delegate a dare to someone else.' },
       { icon:'🔔', name:'The Bell of Last Orders', desc:'Everyone finishes what they are holding.' },
@@ -1810,13 +1810,13 @@
         { id:'fire_3', icon:'🎭', text:'Shadow Charades', sub:'Act something out in the firelight. The table gets one guess each.' },
         { id:'fire_4', icon:'🔮', text:'Ember Prophecy', sub:'Predict who will trigger the next hotspot. Wrong guess drinks 2 fingers.' }
       ] },
-      { id:'altar', left:88, top:27, emoji:'🕯️', tip:'The Shrine', type:'draw', mode:'core', coreAction:'shrine', customCards:[
-        { id:'shrine_1', icon:'✨', text:'Blessing of Steady Hands', sub:'Choose a player to skip their next finger of drink.' },
-        { id:'shrine_2', icon:'💰', text:'Lucky Find', sub:'Nominate someone to hand out 2 fingers instead of taking them.' },
-        { id:'shrine_3', icon:'🕊️', text:'Mercy of the Shrine', sub:'The whole table takes a moment of peace. Nobody drinks this round.' },
-        { id:'shrine_4', icon:'🔥', text:'Candlelash', sub:'The shrine flares back. You drink 3 fingers.' },
-        { id:'shrine_5', icon:'🩸', text:'Blood Price', sub:'Choose: drink 2 fingers, or every other player drinks 1.' },
-        { id:'shrine_6', icon:'🕯️', text:'Uneasy Omen', sub:'The next player to trigger a hotspot drinks 2 extra fingers.' }
+      { id:'altar', left:88, top:27, emoji:'🗿', tip:'The Goblin Idol', type:'draw', mode:'core', coreAction:'shrine', customCards:[
+        { id:'shrine_1', icon:'🪙', text:'Shiny Favor', sub:'Choose a player to skip their next finger of drink. The idol approves greed properly directed.' },
+        { id:'shrine_2', icon:'👑', text:'Crown of Nuisance', sub:'Nominate someone to hand out 2 fingers instead of taking them. They must do it like a goblin king.' },
+        { id:'shrine_3', icon:'🍖', text:'Scrap Feast', sub:'The whole bar enjoys a brief goblin blessing. Nobody drinks this round.' },
+        { id:'shrine_4', icon:'🔥', text:'Idol Spite', sub:'The idol snaps back with bad temper. You drink 3 fingers.' },
+        { id:'shrine_5', icon:'🩸', text:'Price of the Tribe', sub:'Choose: drink 2 fingers, or every other player drinks 1.' },
+        { id:'shrine_6', icon:'👁️', text:'Crooked Omen', sub:'The next player to trigger a hotspot drinks 2 extra fingers.' }
       ] },
       { id:'chests', left:60, top:20, emoji:'🧰', tip:'The Chests', type:'draw', mode:'core', coreAction:'chests', customCards:[
         { id:'chest_1', icon:'🗝️', text:'Hidden key', sub:'You find a useful key. Skip one penalty entirely.' },
@@ -1827,20 +1827,18 @@
         { id:'chest_6', icon:'📜', text:'Sealed note', sub:'Read the note aloud and nominate who it most resembles to drink.' }
       ] },
       { id:'lockbox', left:63, top:17, emoji:'🔐', tip:'The Lock Box', type:'draw', mode:'core', coreAction:'lockbox', customCards:[] },
-      { id:'table', left:36, top:59, emoji:'🍾', tip:'Spin the Bottle', type:'draw', mode:'core', coreAction:'bottle', customCards:[] },
+      { id:'table', left:36, top:59, emoji:'🍾', tip:'Spin the Squig Bottle', type:'draw', mode:'core', coreAction:'bottle', customCards:[] },
       { id:'barrel', left:88, top:50, emoji:'🍺', tip:'The Barrel', type:'draw', mode:'core', coreAction:'barrel', customCards:[] },
-      { id:'barcounter', left:18, top:34, emoji:'🃏', tip:'Pack of Cards', type:'draw', mode:'core', coreAction:'cards', customCards:[] },
-      { id:'bookshelves', left:7, top:30, emoji:'📚', tip:'The Shelves', type:'game', mode:'core', coreAction:'books', customCards:[
-        { id:'book_1', icon:'📕', text:'House Rules', sub:'Read aloud a fresh rule for the room. The table must obey it until the next shelf pick.' },
-        { id:'book_2', icon:'📘', text:'Blue Velvet', sub:'Choose someone to answer a question truthfully or take a drink.' },
-        { id:'book_3', icon:'📗', text:'The Green Ledger', sub:'Nominate a player to collect a debt: they hand out 2 fingers between the table.' },
-        { id:'book_4', icon:'📙', text:'Amber Folio', sub:'Everyone at the table toasts together, then the picker chooses who drinks again.' },
-        { id:'book_5', icon:'📓', text:'Black Record', sub:'Reveal a brief secret, confession, or suspicious fact. Refuse and drink.' },
-        { id:'book_6', icon:'📔', text:'The Quiet Almanac', sub:'Name a topic. Everyone must contribute one word in turn. First stumble drinks.' },
-        { id:'book_7', icon:'📖', text:'The Lantern Chronicle', sub:'Describe a suspicious event from tonight. The table decides whether it sounds true.' },
-        { id:'book_8', icon:'📒', text:'The Brass Ledger', sub:'Choose two players. One must praise the other, or both drink.' },
-        { id:'book_9', icon:'🗞️', text:'The Evening Sheet', sub:'Invent tonight’s headline for the pub. Worst one drinks.' },
-        { id:'book_10', icon:'📚', text:'The Stacked Tomes', sub:'Pick a category. Go around the table naming examples until someone fails.' }
+      { id:'barcounter', left:18, top:34, emoji:'🃏', tip:'The Crooked Deck', type:'draw', mode:'core', coreAction:'cards', customCards:[] },
+      { id:'bookshelves', left:7, top:30, emoji:'📚', tip:'The Lore Shelf', type:'game', mode:'core', coreAction:'books', customCards:[
+        { id:'book_1', icon:'📕', text:'The First Ember', sub:'Tell where you came from and one thing you left behind. Declare a custom of your people. Anyone who breaks it drinks 1 finger.' },
+        { id:'book_2', icon:'📘', text:'The Mirror With No Mercy', sub:'Choose someone. Ask about their past. They answer honestly or drink 2 fingers. If they answer, you drink 1.' },
+        { id:'book_3', icon:'📗', text:'The Debt That Walks', sub:'Name a player. They must declare who here owes them and why. They assign 2 fingers between those involved.' },
+        { id:'book_4', icon:'📙', text:'The Last Warm Night', sub:'All drink together. Beforehand, each shares a brief moment life was better. Then drink 1 finger. Choose one to drink again.' },
+        { id:'book_5', icon:'📓', text:'The Whispered Truth', sub:'Reveal something questionable you have done or would do. Refuse and drink 2 fingers. If told, the table decides if they believe you.' },
+        { id:'book_6', icon:'📖', text:'The Thing You Noticed', sub:'Describe something strange from tonight and why only you saw it. If the table doubts you, drink 2 fingers.' },
+        { id:'book_7', icon:'📒', text:'The Praise You Didn’t Mean', sub:'Choose two players. One must convincingly praise the other. If it feels false, both drink 1 finger.' },
+        
       ] },
       { id:'armwrestle', left:45, top:60, emoji:'💪', tip:'Arm Wrestle', type:'draw', mode:'core', coreAction:'armwrestle', customCards:[] },
       { id:'barstools', left:24, top:50, emoji:'🪑', tip:'The Hot Seat', type:'draw', mode:'core', coreAction:'hotseat', customCards:[
@@ -1852,9 +1850,9 @@
       { id:'sidetable', left:53, top:44, emoji:'🎲', tip:'Dice Game', type:'draw', mode:'core', coreAction:'dice', customCards:[] },
       { id:'sofas', left:66, top:70, emoji:'🛋️', tip:'The Sofas', type:'draw', mode:'core', coreAction:'sofa', customCards:[
         { id:'sofa_1', icon:'🗣️', text:'Town gossip', sub:'They pull you straight into the latest rumour.\nThey ask who told you that.\nThe gossip turns out to be about someone at the table.' },
-        { id:'sofa_2', icon:'🍻', text:'Friendly toast', sub:'They raise their glasses and make room for you.\nYour toast is met with polite silence.\nSomeone demands you prove you mean it with a drink.' },
+        { id:'sofa_2', icon:'🍻', text:'Friendly toast', sub:'They raise their glasses and make space for you.\nYour toast is met with polite silence.\nSomeone demands you prove you mean it with a drink.' },
         { id:'sofa_3', icon:'😬', text:'Awkward silence', sub:'The silence breaks and everyone laughs in relief.\nNobody rescues you and the silence gets worse.\nOne of them asks you a brutally direct question.' },
-        { id:'sofa_4', icon:'🔥', text:'Heated debate', sub:'You pick the right side and win them over.\nYou back the wrong person and get instantly challenged.\nThe debate grows and the whole room starts listening.' },
+        { id:'sofa_4', icon:'🔥', text:'Heated debate', sub:'You pick the right side and win them over.\nYou back the wrong person and get instantly challenged.\nThe debate grows and the whole den starts listening.' },
         { id:'sofa_5', icon:'❓', text:'Personal question', sub:'They answer honestly and the mood softens.\nThey dodge it and turn the question back on you.\nThe question lands badly and the atmosphere chills.' },
         { id:'sofa_6', icon:'🎭', text:'Bold story', sub:'Your story kills and the whole sofa crowd is hooked.\nThey think you are exaggerating and start heckling.\nSomeone interrupts with a better story and steals the moment.' }
       ] }
@@ -1864,24 +1862,24 @@
     const NPCS = [
       {
         id:'edna',
-        name:'Edna',
-        icon:'👩‍🦳',
-        sub:'Bar lady, 31 years',
-        desc:'Bar lady, 31 years behind the counter.'
+        name:'Grok',
+        icon:'👺',
+        sub:'Goblin barkeep, 31 years',
+        desc:'A goblin barkeep with 31 years behind the counter.'
       },
       {
         id:'arthur',
-        name:'Arthur',
-        icon:'🧔',
-        sub:'Landlord. Nervous.',
-        desc:'The landlord, visibly trying to keep it together.'
+        name:'Francois',
+        icon:'👺',
+        sub:'Goblin barkeep. Nervous.',
+        desc:'A goblin barkeep, visibly trying to keep it together.'
       },
       {
         id:'stranger',
-        name:'Stranger',
-        icon:'🕵️',
-        sub:'Nobody remembers them.',
-        desc:'A quiet figure nobody seems able to place.'
+        name:'Skrit',
+        icon:'👺',
+        sub:'Goblin lurker. Nobody places him.',
+        desc:'A quiet goblin figure nobody seems able to place.'
       }
     ];
 
@@ -1926,10 +1924,10 @@
       ['again', 'Spin again']
     ];
     const BOSS_ATTACK_TEMPLATES = [
-      { icon:'🗡️', name:'Lantern Stab', mode:'drink', text:'Step in close and strike before the beast can settle.' },
-      { icon:'🪓', name:'Cask Cleaver', mode:'drink', text:'A heavy tavern-bred swing that hurts if it lands.' },
+      { icon:'🗡️', name:'Crooked Shiv', mode:'drink', text:'Step in close and strike before the beast can settle.' },
+      { icon:'🪓', name:'Cask Cleaver', mode:'drink', text:'A heavy back-alley swing that hurts if it lands.' },
       { icon:'🏹', name:'Bottle Shard Volley', mode:'roll', text:'Loose a careful ranged shot and trust the roll.' },
-      { icon:'✨', name:'Runed Glare', mode:'roll', text:'Channel the room’s old magic into a focused blast.' },
+      { icon:'✨', name:'Runed Glare', mode:'roll', text:'Channel the bar’s old goblin magic into a focused blast.' },
       { icon:'🛡️', name:'Shield Rush', mode:'drink', text:'Drive through the monster’s guard with brute force.' },
       { icon:'⚔️', name:'Duelist’s Lunge', mode:'roll', text:'A precise opening strike that rewards a strong roll.' },
       { icon:'🔥', name:'Firebrand Swing', mode:'drink', text:'Bring heat and spectacle to force the creature back.' },
@@ -1938,7 +1936,7 @@
       { icon:'💥', name:'Tablebreaker Smash', mode:'drink', text:'Break something loud and hope the monster hates it more than you do.' }
     ];
     const DEFAULT_HOTSPOTS = plainClone(HOTSPOTS);
-    const DEFAULT_MAIN_MAP_IMAGE = 'image.png';
+    const DEFAULT_MAIN_MAP_IMAGE = 'https://dqsrd8fqfc-glitch.github.io/DnD/image.png';
     const TYPE_TO_DECK = {
       drink:'DRINKS',
       nominate:'NOMS',
@@ -2010,7 +2008,7 @@
 
     let players = [];
     let pidCounter = 1;
-    let pubName = 'The Crooked Lantern';
+    let pubName = 'The Crooked Crown';
     let selectedColor = PLAYER_COLORS[0][1];
     let mapImageData = '';
     let maps = [];
@@ -2051,15 +2049,15 @@
     };
 
     const deckFlavor = {
-      drink:'A warm hush rolls across the bar as the spirits take notice.',
-      nominate:'The room leans in, waiting to see who is chosen.',
-      social:'Tankards lift. For a heartbeat, the whole pub moves as one.',
-      hotseat:'A chair creaks. Eyes turn. Someone is about to be put on the spot.',
-      challenge:'A scrap of tension crackles through the air.',
-      curse:'The candlelight gutters. Something old is listening.',
+      drink:'A grubby hush rolls across the bar as the goblin spirits take notice.',
+      nominate:'The den leans in, waiting to see who is chosen.',
+      social:'Tankards lift. For a heartbeat, the whole goblin bar moves as one.',
+      hotseat:'A stool creaks. Yellow eyes turn. Someone is about to be put on the spot.',
+      challenge:'A scrap of mean little tension crackles through the air.',
+      curse:'The idol light gutters. Something old and goblinish is listening.',
       game:'Laughter and suspicion mix in equal measure.',
-      item:'Something useful, dangerous, or downright peculiar turns up.',
-      random:'The pub chooses for you.'
+      item:'Something useful, dangerous, or downright grubby turns up.',
+      random:'The bar chooses for you.'
     };
 
     function clamp(n, min, max){ return Math.min(max, Math.max(min, n)); }
@@ -2169,14 +2167,14 @@
       if (spot.coreAction === 'books') {
         return {
           editable:true,
-          summaryPrefix:'Books on shelf',
-          empty:'Add books for this shelf. Each one becomes a clickable spine.',
+          summaryPrefix:'Lore books',
+          empty:'Add worn tomes for this shelf. Each one becomes a clickable spine.',
           addLabel:'＋ Add book',
           titlePlaceholder:'Book title',
-          detailPlaceholder:'Book text',
+          detailPlaceholder:'Book passage',
           defaultIcon:'📘',
           defaultTitle:'New book',
-          defaultDetail:'Write the text this book reveals.'
+          defaultDetail:'Write the passage this book reveals.'
         };
       }
       if (spot.coreAction === 'fireplace') {
@@ -2208,14 +2206,14 @@
       if (spot.coreAction === 'shrine') {
         return {
           editable:true,
-          summaryPrefix:'Shrine omens',
-          empty:'Add blessings and curses the shrine can grant.',
-          addLabel:'＋ Add shrine omen',
+          summaryPrefix:'Idol omens',
+          empty:'Add blessings and curses the goblin idol can grant.',
+          addLabel:'＋ Add idol omen',
           titlePlaceholder:'Blessing or curse',
-          detailPlaceholder:'What the shrine bestows',
-          defaultIcon:'🕯️',
-          defaultTitle:'New shrine omen',
-          defaultDetail:'Describe what the shrine grants or demands.'
+          detailPlaceholder:'What the idol bestows',
+          defaultIcon:'🗿',
+          defaultTitle:'New idol omen',
+          defaultDetail:'Describe what the idol grants or demands.'
         };
       }
       if (spot.coreAction === 'hotseat') {
@@ -2280,14 +2278,14 @@
         wheel:'Spinning wheel',
         jukebox:'Jukebox game',
         lockbox:'Lock box boss fight',
-        shrine:'Shrine ritual',
+        shrine:'Goblin idol ritual',
         cellar:'Cellar maze',
         chests:'Chest draw',
         hotseat:'Hot seat',
         barrel:'Barrel game',
-        cards:'Pack of cards',
+        cards:'Crooked deck',
         dice:'Dice',
-        bottle:'Spin the bottle',
+        bottle:'Spin the squig bottle',
         books:'Bookshelves',
         sofa:'Sofa conversation',
         fireplace:'Fireplace game',
@@ -2545,7 +2543,7 @@
       if (els.notesArea) els.notesArea.value = sessionState.notes || '';
     }
     function resetSessionBits(){
-      pubName = 'The Crooked Lantern';
+      pubName = 'The Crooked Crown';
       sessionState.activeEffects = [];
       sessionState.sessionLog = [];
       sessionState.annotations = [];
@@ -2567,7 +2565,7 @@
     }
     function renderPubName(){
       if (els.pubNameInput) els.pubNameInput.value = pubName;
-      document.title = pubName || 'The Crooked Lantern';
+      document.title = pubName || 'The Crooked Crown';
     }
     function clampInitiative(){
       if (!players.length) {
@@ -2789,7 +2787,7 @@
 
     function restoreFromData(data){
       resetSessionBits();
-      pubName = typeof data.pubName === 'string' && data.pubName.trim() ? data.pubName.trim() : 'The Crooked Lantern';
+      pubName = typeof data.pubName === 'string' && data.pubName.trim() ? data.pubName.trim() : 'The Crooked Crown';
       spliceReplace(DRINKS, data.DRINKS || DRINKS);
       spliceReplace(NOMS, data.NOMS || NOMS);
       spliceReplace(SOCIALS, data.SOCIALS || SOCIALS);
@@ -2947,7 +2945,7 @@
       openModal(`
         <div class="modalCard">
           <h3>🗺️ Choose Map</h3>
-          <p>Pick the built-in Crooked Lantern map or upload your own image for the current room.</p>
+          <p>Pick the built-in Crooked Crown goblin bar map or upload your own image for the current den.</p>
           <div class="modalTools">
             <button id="mapModalDefaultBtn" type="button">Use Default Map</button>
             <button id="mapModalUploadBtn" type="button">Upload Custom Map</button>
@@ -3002,7 +3000,7 @@
       renderPlayers();
       renderAllTokens();
       renderInitiative();
-      addLog('Player added', name + ' joined the lock-in.');
+      addLog('Player added', name + ' joined the goblin revel.');
       scheduleSave();
     }
     function renderPlayers(){
@@ -3097,7 +3095,7 @@
       renderAllTokens();
       renderInitiative();
       renderEffects();
-      addLog('Player removed', p.name + ' left the table.');
+      addLog('Player removed', p.name + ' slipped out of the bar.');
       scheduleSave();
     }
     function flashToken(id){
@@ -3254,7 +3252,7 @@
       openModal(`
         <div class="modalCard">
           <h3>${h.emoji} ${escapeHtml(h.tip)}</h3>
-          <p>${escapeHtml(h.sub || (h.mode === 'draw' ? 'This hotspot reveals one result from its own custom list.' : 'This hotspot triggers a built-in pub interaction.'))}</p>
+          <p>${escapeHtml(h.sub || (h.mode === 'draw' ? 'This hotspot reveals one result from its own custom list.' : 'This hotspot triggers a built-in goblin bar interaction.'))}</p>
           <button id="revealBtn" type="button">✦ Reveal Fate ✦</button>
           <div id="revealMount"></div>
         </div>
@@ -3466,7 +3464,7 @@
       if (!els.logList) return;
       els.logList.innerHTML = '';
       if (!sessionState.sessionLog.length) {
-        els.logList.innerHTML = '<div class="tiny">No table history yet.</div>';
+        els.logList.innerHTML = '<div class="tiny">No bar gossip yet.</div>';
         return;
       }
       sessionState.sessionLog.forEach((entry) => {
@@ -3712,7 +3710,7 @@
         players.forEach((p) => { p.thirst = clamp(p.thirst - 1, 0, 10); });
         renderPlayers();
         addLog('Wheel result', 'DOWN IT! Everyone drank.');
-        renderWheelOutcome('<h4>' + title + '</h4><p>' + escapeHtml(seg.sub || 'Everyone drinks. The whole table takes the penalty together.') + '</p>');
+        renderWheelOutcome('<h4>' + title + '</h4><p>' + escapeHtml(seg.sub || 'Everyone drinks. The whole bar takes the penalty together.') + '</p>');
         scheduleSave();
         return;
       }
@@ -3852,15 +3850,15 @@
     }
     function openBossBattleModal(spot){
       const boss = {
-        name:'The Lantern Warden',
+        name:'The Crown Snatcher',
         icon:'👹',
-        intro:'The seal snaps. Smoke rolls across the floor and a tavern-haunting brute rises out of the lock box, furious and hungry.',
+        intro:'The seal snaps. Smoke rolls across the floor and a crown-mad brute rises out of the lock box, furious and hungry.',
         maxHp:140,
         hp:140
       };
       const roster = players.length
         ? players.map((player, index) => ({ id:player.id, name:player.name, color:player.color, index }))
-        : [{ id:'party', name:'The table', color:'#9b6a22', index:0 }];
+        : [{ id:'party', name:'The bar', color:'#9b6a22', index:0 }];
       const attackSets = {};
       const fighterStats = {};
       roster.forEach((member) => {
@@ -4003,12 +4001,12 @@
         hpFillEl.style.width = pct + '%';
         hpLabelEl.textContent = `${boss.hp} / ${boss.maxHp}`;
         if (boss.hp <= 0) {
-          actionResultEl.innerHTML = '<h4>The monster falls</h4><p>The Lantern Warden crashes to the floor. The pub survives the night.</p>';
+          actionResultEl.innerHTML = '<h4>The monster falls</h4><p>The Crown Snatcher crashes to the floor. The goblin bar survives the night.</p>';
           winMountEl.innerHTML = `
             <div class="bossWin">
               <div class="icon">🏆</div>
               <h4>Victory</h4>
-              <p>The lock box is empty, the monster is broken, and the room erupts.</p>
+              <p>The lock box is empty, the monster is broken, and the whole den erupts.</p>
             </div>
           `;
           ['bossResolveRollBtn'].forEach((id) => {
@@ -4079,14 +4077,14 @@
       };
       openModal(`
         <div class="modalCard">
-          <h3>🕯️ ${escapeHtml(spot.tip)}</h3>
-          <p>The shrine watches in silence. Choose how you approach it and see whether it answers with favor or judgment.</p>
+          <h3>🗿 ${escapeHtml(spot.tip)}</h3>
+          <p>A grubby goblin idol watches with bright little eyes. Choose how you approach it and see whether it answers with favor, mockery, or spite.</p>
           <div class="modalTools">
-            <button id="shrineOfferBtn" type="button">Offer a candle</button>
-            <button id="shrineWhisperBtn" type="button">Whisper a prayer</button>
-            <button id="shrineDefyBtn" type="button">Steal a flame</button>
+            <button id="shrineOfferBtn" type="button">Offer something shiny</button>
+            <button id="shrineWhisperBtn" type="button">Mutter a goblin plea</button>
+            <button id="shrineDefyBtn" type="button">Pocket its tribute</button>
           </div>
-          <div id="shrineResult" class="revealCard">The wax trembles, waiting for your choice.</div>
+          <div id="shrineResult" class="revealCard">The idol grins crookedly, waiting for your choice.</div>
         </div>
       `);
       const resultEl = document.getElementById('shrineResult');
@@ -4096,12 +4094,12 @@
         if (mode === 'whisper') kind = Math.random() < 0.5 ? 'blessing' : 'curse';
         if (mode === 'defy') kind = Math.random() < 0.7 ? 'curse' : 'blessing';
         const omen = chooseOmen(kind);
-        const verdict = kind === 'blessing' ? 'The shrine is kind.' : kind === 'curse' ? 'The shrine is angered.' : 'The shrine answers in its own way.';
-        addLog('Core hotspot', 'Shrine ritual: ' + mode + ' -> ' + (omen ? omen.text : 'omen') + '.');
+        const verdict = kind === 'blessing' ? 'The idol chitters its approval.' : kind === 'curse' ? 'The idol bares its teeth.' : 'The idol answers in its own crooked way.';
+        addLog('Core hotspot', 'Goblin idol: ' + mode + ' -> ' + (omen ? omen.text : 'omen') + '.');
         resultEl.innerHTML = `
-          <h4>${escapeHtml((omen && (omen.icon || '🕯️') + ' ' + (omen.text || 'Shrine omen')) || 'Shrine omen')}</h4>
+          <h4>${escapeHtml((omen && (omen.icon || '🗿') + ' ' + (omen.text || 'Idol omen')) || 'Idol omen')}</h4>
           <p>${escapeHtml(verdict)}</p>
-          <p>${escapeHtml((omen && omen.sub) || 'The shrine gives no clear answer, only flickering light.')}</p>
+          <p>${escapeHtml((omen && omen.sub) || 'The idol gives no clear answer, only a nasty little grin.')}</p>
         `;
       };
       document.getElementById('shrineOfferBtn').addEventListener('click', () => resolve('offer'));
@@ -4387,16 +4385,16 @@
     function openBookshelfModal(spot){
       const cards = normalizeHotspotCards(spot);
       const fallback = [
-        { id:'book_fallback_1', icon:'📕', text:'House Rules', sub:'Read aloud a new rule for the room.' },
-        { id:'book_fallback_2', icon:'📘', text:'Blue Velvet', sub:'Choose someone to answer honestly or drink.' },
-        { id:'book_fallback_3', icon:'📗', text:'Green Ledger', sub:'Nominate who settles the next penalty.' }
+        { id:'book_fallback_1', icon:'📕', text:'The First Ember', sub:'Tell where you came from and one thing you left behind.' },
+        { id:'book_fallback_2', icon:'📘', text:'The Mirror With No Mercy', sub:'Choose someone and ask about their past.' },
+        { id:'book_fallback_3', icon:'📗', text:'The Debt That Walks', sub:'Name a player and declare who owes them.' }
       ];
       const books = cards.length ? cards : fallback;
       const palette = ['#7d3a2a', '#355c8b', '#5b7a34', '#9b6a22', '#4d3f67', '#824d2e', '#2f6a63'];
       openModal(`
         <div class="modalCard">
           <h3>📚 ${escapeHtml(spot.tip)}</h3>
-          <p>Pick a book from the shelf to reveal what is written inside.</p>
+          <p>Choose a worn volume from the shelf and reveal the tale, truth, or demand hidden inside.</p>
           <div class="bookshelf" id="bookshelfChoices">
             ${books.map((book, index) => `
               <button type="button" class="bookPick" data-book-id="${escapeAttr(book.id)}" style="--bookColor:${palette[index % palette.length]};min-height:${170 + ((index % 4) * 18)}px">
@@ -4404,7 +4402,7 @@
               </button>
             `).join('')}
           </div>
-          <div id="bookshelfResult" class="revealCard">Choose a book to read its passage.</div>
+          <div id="bookshelfResult" class="revealCard">Choose a book to reveal its passage.</div>
         </div>
       `);
       const resultEl = document.getElementById('bookshelfResult');
@@ -4414,8 +4412,8 @@
           btn.classList.add('active');
           const book = books.find((item) => item.id === btn.dataset.bookId);
           if (!book) return;
-          addLog('Core hotspot', 'Shelves opened: ' + (book.text || 'Untitled') + '.');
-          resultEl.innerHTML = `<h4>${escapeHtml((book.icon || '📘') + ' ' + (book.text || 'Untitled'))}</h4><p>${escapeHtml(book.sub || 'The pages are blank, but the room still expects a choice.')}</p>`;
+          addLog('Core hotspot', 'Lore shelf opened: ' + (book.text || 'Untitled') + '.');
+          resultEl.innerHTML = `<h4>${escapeHtml((book.icon || '📘') + ' ' + (book.text || 'Untitled'))}</h4><p>${escapeHtml(book.sub || 'The pages are blank, but the bar still expects a choice.')}</p>`;
         });
       });
     }
@@ -4472,26 +4470,26 @@
       }
       const scenes = [
         {
-          intro:'A tight-knit group on the sofas glance up as you drift over. There is room for you if you can find the right opening line.',
+          intro:'A knot of goblins on the sofas glance up as you drift over. There is space for you if you can find the right opening line.',
           choices:[
-            { text:'Ask what drama you have missed tonight.', good:'They laugh and pull you straight into the gossip. Pick someone to avoid their next drink.', bad:'You interrupt a tense story. They stare until you awkwardly back out and drink 2 fingers.' },
+            { text:'Ask what scrap you have missed tonight.', good:'They laugh and pull you straight into the gossip. Pick someone to avoid their next drink.', bad:'You interrupt a tense story. They stare until you awkwardly back out and drink 2 fingers.' },
             { text:'Offer a toast to new friends and soft seats.', good:'They cheer the toast and wave you in. Everyone on the sofas takes a friendly sip.', bad:'It lands too earnest and they roast you for it. You drink 1 finger for trying too hard.' },
             { text:'Drop a bold rumour and see who bites.', good:'They love the chaos and start piling on their own rumours. Nominate someone to drink 2 fingers.', bad:'The rumour is clearly nonsense. The group turns on you and you drink 3 fingers.' }
           ]
         },
         {
-          intro:'Three friends are halfway through a heated debate. If you jump in, you might become the hero of the circle or the next punchline.',
+          intro:'Three goblins are halfway through a heated debate. If you jump in, you might become the hero of the circle or the next punchline.',
           choices:[
-            { text:'Back the loudest person confidently.', good:'You read the room perfectly and win instant approval. Choose someone to hand out 2 fingers.', bad:'You backed the wrong side immediately. Drink 2 fingers.' },
+            { text:'Back the loudest goblin confidently.', good:'You read the den perfectly and win instant approval. Choose someone to hand out 2 fingers.', bad:'You backed the wrong side immediately. Drink 2 fingers.' },
             { text:'Play peacemaker and calm everyone down.', good:'The mood softens and the whole group nods. Nobody drinks this turn.', bad:'They were enjoying the argument. They boo your diplomacy and you drink 1 finger.' },
             { text:'Challenge them to prove it with a story.', good:'They love it and start trading ridiculous tales. Pick a player to tell the next story or drink.', bad:'The challenge dies flat. You get stuck performing instead and drink 2 fingers.' }
           ]
         },
         {
-          intro:'The sofa crowd look like old friends. They make space, but only if you can match their energy.',
+          intro:'The sofa crowd look like old raiders. They make space, but only if you can match their energy.',
           choices:[
             { text:'Lead with a self-deprecating joke.', good:'They crack up and welcome you in. Take a social sip together.', bad:'The joke clunks badly. You have to rescue it with 2 fingers of drink.' },
-            { text:'Ask for their most suspicious pub story.', good:'They pile in with stories and you become part of the circle. Nominate someone to share next.', bad:'They suspect you are fishing too hard. Drink 1 finger and try again later.' },
+            { text:'Ask for their most suspicious bar story.', good:'They pile in with stories and you become part of the circle. Nominate someone to share next.', bad:'They suspect you are fishing too hard. Drink 1 finger and try again later.' },
             { text:'Act like you already belong there.', good:'The confidence works. The group folds you into the conversation immediately.', bad:'It comes off arrogant. The sofa crowd send you away to drink 3 fingers.' }
           ]
         }
@@ -4500,7 +4498,7 @@
       openModal(`
         <div class="modalCard">
           <h3>🛋️ ${escapeHtml(spot.tip)}</h3>
-          <p>There is a group of friends deep in conversation. Pick how you try to join in.</p>
+          <p>A cluster of goblins is deep in conversation. Pick how you try to join in.</p>
           <div class="conversationScene">
             <div class="conversationPrompt">
               <strong>Scene</strong>
@@ -4526,9 +4524,9 @@
     }
     function openFireplaceModal(spot){
       const sceneText = [
-        'The fire crackles in slow rhythm. The room goes quiet, and someone suggests letting the flames choose what happens next.',
-        'The coals pulse like they are trying to tell a story. A hush settles over the room as everyone stares in.',
-        'The fireplace becomes oddly hypnotic. Before long, the whole table is waiting for the fire to decide the next game.'
+        'The fire crackles in slow rhythm. The den goes quiet, and someone suggests letting the flames choose what happens next.',
+        'The coals pulse like they are trying to tell a story. A hush settles over the den as everyone stares in.',
+        'The fireplace becomes oddly hypnotic. Before long, the whole bar is waiting for the fire to decide the next game.'
       ];
       const intro = sceneText[Math.floor(Math.random() * sceneText.length)];
       const customResponses = normalizeHotspotCards(spot);
@@ -4623,8 +4621,8 @@
       }).join('');
       openModal(`
         <div class="modalCard">
-          <h3>🍾 Spin the Bottle</h3>
-          <p>Spin the bottle and watch it land on a player. It will work through a shuffled order before repeating.</p>
+          <h3>🍾 Spin the Squig Bottle</h3>
+          <p>Spin the bottle and watch it snap toward a player. It will work through a shuffled order before repeating.</p>
           <div class="bottleArena">
             ${players.length ? seatMarkup : ''}
             <div id="bottleSpinner" class="bottleSpinner"></div>
@@ -4633,7 +4631,7 @@
           <div class="modalTools">
             <button id="bottleSpinBtn" type="button">Spin</button>
           </div>
-          <div id="bottleResult" class="revealCard">${players.length ? 'Everyone takes a step back from the bottle.' : 'Add players first so the bottle has someone to choose.'}</div>
+          <div id="bottleResult" class="revealCard">${players.length ? 'Everyone takes a cautious step back from the bottle.' : 'Add players first so the bottle has someone to choose.'}</div>
         </div>
       `);
       const bottleEl = document.getElementById('bottleSpinner');
@@ -4660,7 +4658,7 @@
           spinBtn.disabled = false;
           const chosenSeat = document.querySelector(`.bottleSeat[data-player-id="${chosen.id}"]`);
           if (chosenSeat) chosenSeat.classList.add('active');
-          addLog('Core hotspot', 'Spin the Bottle chose ' + chosen.name + '.');
+          addLog('Core hotspot', 'Spin the Squig Bottle chose ' + chosen.name + '.');
           resultEl.innerHTML = `<h4>${escapeHtml(chosen.name)}</h4><p>The bottle points their way.${queue.length ? ' ' + queue.length + ' players remain in this round.' : ' Everyone has been chosen once; the next spin starts a fresh shuffle.'}</p>`;
         };
         bottleEl.addEventListener('transitionend', onDone, { once:true });
@@ -4771,7 +4769,7 @@
         btn.type = 'button';
         btn.textContent = 'Draw ' + DECK_META[key].label;
         btn.addEventListener('click', () => {
-          const result = drawFromDeckKey(key, { source:'DM Dashboard' });
+      const result = drawFromDeckKey(key, { source:'Goblin Bar Dashboard' });
           openModal(`<div class="modalCard"><h3>${DECK_META[key].icon} ${escapeHtml(DECK_META[key].label)}</h3>${renderRevealedCard(result)}</div>`);
           wireRevealActions(result);
           renderAdmin();
@@ -5194,8 +5192,8 @@
           id,
           icon:'🎭',
           name:'New NPC',
-          sub:'A fresh face in the pub.',
-          desc:'A fresh face in the pub.'
+          sub:'A fresh goblin face in the bar.',
+          desc:'A fresh goblin face in the bar.'
         });
         maps.forEach((map) => { map.npcTokPos[id] = [50,50]; });
         renderNPCList();
@@ -5382,7 +5380,7 @@
       mapImageData = DEFAULT_MAIN_MAP_IMAGE;
       if (currentMap()) currentMap().imageData = mapImageData;
       refreshMapImageAndLayers();
-      addLog('Map loaded', (currentMap() ? currentMap().name : 'The map') + ' was set to the default Crooked Lantern map.');
+      addLog('Map loaded', (currentMap() ? currentMap().name : 'The map') + ' was set to the default Crooked Crown map.');
       scheduleSave();
     }
     function addMap(){
@@ -5432,7 +5430,7 @@
     els.mapChooserBtn.addEventListener('click', openMapChooserModal);
     els.pubNameInput.addEventListener('input', (e) => {
       const nextName = e.target.value.trim();
-      pubName = nextName || 'The Crooked Lantern';
+      pubName = nextName || 'The Crooked Crown';
       renderPubName();
       scheduleSave();
     });
