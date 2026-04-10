@@ -3900,29 +3900,19 @@
         <div class="modalCard bossShell">
           <h3>🔐 ${escapeHtml(spot.tip)}</h3>
           <div class="bossLock">
-            <p>An iron lock box sits under the boards, humming with bad intent. Enter the four-digit code to break the seal.</p>
+            <p>An iron lock box sits under the boards, humming with bad intent. For now, the seal breaks the moment someone dares to open it.</p>
             <div class="bossRollRow">
-              <input id="lockboxCodeInput" type="password" inputmode="numeric" maxlength="4" placeholder="1234">
-              <button id="lockboxOpenBtn" type="button">Unlock</button>
+              <button id="lockboxOpenBtn" type="button">Open the lock box</button>
             </div>
-            <div id="lockboxResult" class="revealCard">The lock clicks once, waiting for the right code.</div>
+            <div id="lockboxResult" class="revealCard">The box rattles softly, like something inside already knows your name.</div>
           </div>
         </div>
       `);
-      const codeInput = document.getElementById('lockboxCodeInput');
       const resultEl = document.getElementById('lockboxResult');
-      const tryUnlock = () => {
-        if ((codeInput.value || '').trim() !== '1234') {
-          resultEl.innerHTML = '<h4>Wrong code</h4><p>The box stays shut and something on the other side scratches back.</p>';
-          addLog('Core hotspot', 'Lock box rejected the wrong code.');
-          return;
-        }
-        addLog('Core hotspot', 'Lock box opened. Final battle triggered.');
+      document.getElementById('lockboxOpenBtn').addEventListener('click', () => {
+        resultEl.innerHTML = '<h4>The seal breaks</h4><p>The lock gives with a harsh crack. Whatever was waiting inside is coming out.</p>';
+        addLog('Core hotspot', 'Lock box opened. Krenko enters the room.');
         openBossBattleModal(spot);
-      };
-      document.getElementById('lockboxOpenBtn').addEventListener('click', tryUnlock);
-      codeInput.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter') tryUnlock();
       });
     }
     function openBossBattleModal(spot){
