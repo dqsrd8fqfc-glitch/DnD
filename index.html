@@ -1929,12 +1929,12 @@
       ] },
       { id:'sidetable', left:53, top:44, emoji:'🎲', tip:'Dice Game', type:'draw', mode:'core', coreAction:'dice', customCards:[] },
       { id:'sofas', left:66, top:70, emoji:'👺', tip:'The Goblin Gang', type:'draw', mode:'core', coreAction:'sofa', customCards:[
-        { id:'sofa_1', icon:'🗣️', text:'Gang Rumour', sub:'They drag you into the latest spiteful rumour.\nThey demand who told you first.\nThe rumour turns out to involve someone in the call.' },
-        { id:'sofa_2', icon:'🍻', text:'Suspicious Welcome', sub:'They make space and wait for you to prove yourself.\nYour greeting lands well and they cheer.\nYour greeting falls flat and they make you drink for the effort.' },
-        { id:'sofa_3', icon:'😬', text:'Bad Feeling', sub:'The silence breaks and they cackle at your discomfort.\nNobody helps you and the mood gets worse.\nOne of them leans in with a nasty direct question.' },
-        { id:'sofa_4', icon:'🔥', text:'Gang Argument', sub:'You pick the right side and win them over.\nYou back the wrong goblin and get challenged immediately.\nThe whole den starts listening to see if you survive it.' },
-        { id:'sofa_5', icon:'❓', text:'Tribe Question', sub:'They answer honestly and the mood softens.\nThey dodge it and turn the question back on you.\nThe question lands badly and everyone gets colder.' },
-        { id:'sofa_6', icon:'🎭', text:'Big Goblin Tale', sub:'Your tale kills and the whole gang is hooked.\nThey think you are exaggerating and start heckling.\nSomeone interrupts with a better tale and steals the moment.' }
+        { id:'sofa_1', icon:'🗣️', text:'Crew Gossip', sub:'They drag you into the latest whisper about the boss.\nThey demand who tipped you off.\nThe gossip turns out to involve someone on the call.' },
+        { id:'sofa_2', icon:'🪙', text:'Tribute Check', sub:'They make space and wait to see what you offer the crew.\nYour tribute or greeting lands well and they cheer.\nIt falls flat and they make you drink for wasting their time.' },
+        { id:'sofa_3', icon:'😬', text:'Bad Turf', sub:'The silence breaks and they cackle at your discomfort.\nNobody helps you and the mood gets uglier.\nOne of them leans in and asks what business you have on their turf.' },
+        { id:'sofa_4', icon:'🔥', text:'Crew Dispute', sub:'You back the right goblin and win the crew over.\nYou back the wrong goblin and get challenged immediately.\nThe whole den starts listening to see whether you survive the fallout.' },
+        { id:'sofa_5', icon:'👑', text:'Boss Question', sub:'They answer honestly and the mood softens.\nThey dodge it and turn the question back on you.\nThe question lands badly and everyone starts watching you like a snitch.' },
+        { id:'sofa_6', icon:'🗡️', text:'Mob Legend', sub:'Your tale kills and the whole crew is hooked.\nThey think you are exaggerating and start heckling.\nSomeone older interrupts with a nastier story and steals the moment.' }
       ] }
     ];
     const REMOVED_DEFAULT_HOTSPOTS = ['dartboard', 'lanterns', 'mantelpiece'];
@@ -4560,27 +4560,27 @@
       }
       const scenes = [
         {
-          intro:'A goblin gang sprawls across the sofas like they own the corner. They look up together as you approach, judging whether you belong.',
+          intro:'A goblin mob sprawls across the corner like it owns the whole bar. They look up together as you approach, weighing whether you are worth hearing out.',
           choices:[
-            { text:'Ask what scrap you have missed tonight.', good:'They laugh and drag you straight into gang gossip. Pick someone to avoid their next drink.', bad:'You interrupt a tense story. The whole gang stares until you back out and drink 2 fingers.' },
-            { text:'Offer a crooked toast to the gang.', good:'They cheer and wave you in. Everyone in the gang takes a friendly sip.', bad:'It lands too earnest and they roast you for it. You drink 1 finger for trying too hard.' },
-            { text:'Drop a bold rumour and see who bites.', good:'They love the chaos and start piling on their own rumours. Nominate someone to drink 2 fingers.', bad:'The rumour is clearly nonsense. The gang turns on you and you drink 3 fingers.' }
+            { text:'Ask what trouble the crew has stirred up tonight.', good:'They laugh and drag you straight into mob gossip. Pick someone to avoid their next drink.', bad:'You interrupt a tense story. The whole crew stares until you back out and drink 2 fingers.' },
+            { text:'Offer a crooked toast to the boss and crew.', good:'They cheer and wave you in. Everyone in the mob takes a friendly sip.', bad:'It lands too earnest and they roast you for it. You drink 1 finger for trying too hard.' },
+            { text:'Drop a bold rumour about the crown and see who bites.', good:'They love the chaos and start piling on their own rumours. Nominate someone to drink 2 fingers.', bad:'The rumour is clearly nonsense. The mob turns on you and you drink 3 fingers.' }
           ]
         },
         {
-          intro:'Three goblins in the gang are halfway through a heated argument over some old slight. If you jump in, you might become a hero or the next joke.',
+          intro:'Three goblins in the mob are halfway through a heated argument over rank, loot, and who gets heard by the boss. If you jump in, you might rise or get cut down.',
           choices:[
-            { text:'Back the loudest goblin confidently.', good:'You read the gang perfectly and win instant approval. Choose someone to hand out 2 fingers.', bad:'You backed the wrong side immediately. Drink 2 fingers.' },
-            { text:'Play peacemaker and calm everyone down.', good:'The mood softens and the whole gang nods. Nobody drinks this turn.', bad:'They were enjoying the argument. They boo your diplomacy and you drink 1 finger.' },
-            { text:'Challenge them to prove it with a story.', good:'They love it and start trading ridiculous tales. Pick a player to tell the next story or drink.', bad:'The challenge dies flat. You get stuck performing instead and drink 2 fingers.' }
+            { text:'Back the loudest goblin confidently.', good:'You read the mob perfectly and win instant approval. Choose someone to hand out 2 fingers.', bad:'You backed the wrong side immediately. Drink 2 fingers.' },
+            { text:'Offer to settle it like a proper crew dispute.', good:'The mood sharpens and the whole mob nods. Nobody drinks this turn.', bad:'They were enjoying the chaos. They boo your diplomacy and you drink 1 finger.' },
+            { text:'Demand they prove it with a story of the job.', good:'They love it and start trading ridiculous crew tales. Pick a player to tell the next story or drink.', bad:'The challenge dies flat. You get stuck performing instead and drink 2 fingers.' }
           ]
         },
         {
-          intro:'This goblin gang looks like old raiders with long memories. They make space, but only if you can match their energy.',
+          intro:'This goblin mob looks like old raiders with long memories and sharp little grudges. They make space, but only if you carry yourself like you belong on their turf.',
           choices:[
-            { text:'Lead with a self-deprecating joke.', good:'They crack up and welcome you in. Take a social sip together.', bad:'The joke clunks badly. You have to rescue it with 2 fingers of drink.' },
-            { text:'Ask for their most suspicious raid story.', good:'They pile in with stories and you become part of the gang for a moment. Nominate someone to share next.', bad:'They suspect you are fishing too hard. Drink 1 finger and try again later.' },
-            { text:'Act like you already belong there.', good:'The confidence works. The gang folds you into the conversation immediately.', bad:'It comes off arrogant. The gang sends you away to drink 3 fingers.' }
+            { text:'Lead with a joke about owing tribute.', good:'They crack up and welcome you in. Take a social sip together.', bad:'The joke clunks badly. You have to rescue it with 2 fingers of drink.' },
+            { text:'Ask for their dirtiest crew story.', good:'They pile in with stories and you become part of the mob for a moment. Nominate someone to share next.', bad:'They suspect you are fishing too hard. Drink 1 finger and try again later.' },
+            { text:'Act like you already work for the boss.', good:'The confidence works. The mob folds you into the conversation immediately.', bad:'It comes off arrogant. The mob sends you away to drink 3 fingers.' }
           ]
         }
       ];
@@ -4588,7 +4588,7 @@
       openModal(`
         <div class="modalCard">
           <h3>👺 ${escapeHtml(spot.tip)}</h3>
-          <p>You have wandered into a goblin gang’s corner. Pick how you try to survive the encounter.</p>
+          <p>You have wandered into a goblin mob’s corner. Pick how you try to survive the encounter.</p>
           <div class="conversationScene">
             <div class="conversationPrompt">
               <strong>Scene</strong>
@@ -4607,7 +4607,7 @@
           const choice = scene.choices[Number(btn.dataset.choice)];
           if (!choice) return;
           const success = Math.random() < 0.5;
-          addLog('Core hotspot', 'Goblin gang encounter: ' + choice.text + ' -> ' + (success ? 'went well' : 'went badly') + '.');
+          addLog('Core hotspot', 'Goblin mob encounter: ' + choice.text + ' -> ' + (success ? 'went well' : 'went badly') + '.');
           resultEl.innerHTML = `<h4>${success ? 'It goes well' : 'It goes badly'}</h4><p>${escapeHtml(success ? choice.good : choice.bad)}</p>`;
         });
       });
