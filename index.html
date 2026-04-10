@@ -1862,7 +1862,7 @@
 
     const HOTSPOTS = [
       { id:'wheel', left:38, top:21, emoji:'🎡', tip:'Spinning Wheel', type:'wheel', mode:'core', coreAction:'wheel', customCards:[] },
-      { id:'jukebox', left:70, top:21, emoji:'🎸', tip:'The Ukulele', type:'draw', mode:'core', coreAction:'jukebox', customCards:[
+      { id:'jukebox', left:70, top:21, emoji:'🪕', tip:'The Ukulele Band', type:'draw', mode:'core', coreAction:'jukebox', customCards:[
         { id:'jukebox_1', icon:'🎶', text:'Name That Tune', sub:'Someone gives three words from a song. First correct guess nominates who drinks 2 fingers.' },
         { id:'jukebox_2', icon:'🎤', text:'One Word Lyrics', sub:'Go around the call typing or saying one word of a song each. First person to stall drinks.' },
         { id:'jukebox_3', icon:'📣', text:'Finish The Chorus', sub:'A player posts or says the first line of a chorus. Someone else must finish it or drink 2 fingers.' },
@@ -2259,13 +2259,13 @@
       if (spot.coreAction === 'jukebox') {
         return {
           editable:true,
-          summaryPrefix:'Ukulele tunes',
-          empty:'Add musical drinking prompts for the ukulele.',
-          addLabel:'＋ Add ukulele tune',
+          summaryPrefix:'Band setlist',
+          empty:'Add musical drinking prompts for the ukulele band.',
+          addLabel:'＋ Add band tune',
           titlePlaceholder:'Track or prompt',
-          detailPlaceholder:'What the ukulele demands',
+          detailPlaceholder:'What the ukulele band demands',
           defaultIcon:'🎵',
-          defaultTitle:'New ukulele tune',
+          defaultTitle:'New band tune',
           defaultDetail:'Describe the musical challenge this track triggers.'
         };
       }
@@ -2342,7 +2342,7 @@
     function coreHotspotLabel(action){
       return {
         wheel:'Spinning wheel',
-        jukebox:'Ukulele game',
+        jukebox:'Ukulele band',
         lockbox:'Lock box boss fight',
         shrine:'Goblin idol ritual',
         cellar:'Cellar maze',
@@ -3875,24 +3875,24 @@
       let queue = shuffleIndices(prompts.map((_, index) => index));
       openModal(`
         <div class="modalCard">
-          <h3>🎸 ${escapeHtml(spot.tip)}</h3>
-          <p>The ukulele gets plucked and throws out a musical drinking challenge.</p>
+          <h3>🪕 ${escapeHtml(spot.tip)}</h3>
+          <p>The ukulele band strikes up and throws out a musical drinking challenge.</p>
           <div class="modalTools">
             <button id="jukeboxPlayBtn" type="button">Play next tune</button>
           </div>
-          <div id="jukeboxResult" class="revealCard">Press play to hear what the ukulele demands.</div>
+          <div id="jukeboxResult" class="revealCard">Press play to hear what the ukulele band demands.</div>
         </div>
       `);
       const resultEl = document.getElementById('jukeboxResult');
       document.getElementById('jukeboxPlayBtn').addEventListener('click', () => {
         if (!prompts.length) {
-          resultEl.innerHTML = '<h4>No tunes loaded</h4><p>Add ukulele prompts in the hotspot editor first.</p>';
+          resultEl.innerHTML = '<h4>No tunes loaded</h4><p>Add band prompts in the hotspot editor first.</p>';
           return;
         }
         if (!queue.length) queue = shuffleIndices(prompts.map((_, index) => index));
         const prompt = prompts[queue.shift()];
-        addLog('Core hotspot', 'Ukulele chose ' + (prompt.text || 'a tune') + '.');
-        resultEl.innerHTML = `<h4>${escapeHtml((prompt.icon || '🎶') + ' ' + (prompt.text || 'Ukulele tune'))}</h4><p>${escapeHtml(prompt.sub || 'The ukulele twangs, but gives no clear instruction.')}</p>`;
+        addLog('Core hotspot', 'Ukulele band chose ' + (prompt.text || 'a tune') + '.');
+        resultEl.innerHTML = `<h4>${escapeHtml((prompt.icon || '🎶') + ' ' + (prompt.text || 'Band tune'))}</h4><p>${escapeHtml(prompt.sub || 'The ukulele band twangs away, but gives no clear instruction.')}</p>`;
       });
     }
     function openLockboxModal(spot){
@@ -3900,19 +3900,30 @@
         <div class="modalCard bossShell">
           <h3>🔐 ${escapeHtml(spot.tip)}</h3>
           <div class="bossLock">
-            <p>An iron lock box sits under the boards, humming with bad intent. For now, the seal breaks the moment someone dares to open it.</p>
+            <p>An iron lock box sits under the boards, humming with bad intent. Enter the code if you know it and break the seal.</p>
             <div class="bossRollRow">
-              <button id="lockboxOpenBtn" type="button">Open the lock box</button>
+              <input id="lockboxCodeInput" type="password" inputmode="numeric" maxlength="4" placeholder="Enter code" aria-label="Lock box code">
+              <button id="lockboxOpenBtn" type="button">Unlock</button>
             </div>
-            <div id="lockboxResult" class="revealCard">The box rattles softly, like something inside already knows your name.</div>
+            <div id="lockboxResult" class="revealCard">The lock clicks once, waiting for the right code.</div>
           </div>
         </div>
       `);
+      const codeInput = document.getElementById('lockboxCodeInput');
       const resultEl = document.getElementById('lockboxResult');
-      document.getElementById('lockboxOpenBtn').addEventListener('click', () => {
+      const tryUnlock = () => {
+        if ((codeInput.value || '').trim() !== '1234') {
+          resultEl.innerHTML = '<h4>Wrong code</h4><p>The box stays shut and something on the other side scratches back.</p>';
+          addLog('Core hotspot', 'Lock box rejected the wrong code.');
+          return;
+        }
         resultEl.innerHTML = '<h4>The seal breaks</h4><p>The lock gives with a harsh crack. Whatever was waiting inside is coming out.</p>';
         addLog('Core hotspot', 'Lock box opened. Krenko enters the room.');
         openBossBattleModal(spot);
+      };
+      document.getElementById('lockboxOpenBtn').addEventListener('click', tryUnlock);
+      codeInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') tryUnlock();
       });
     }
     function openBossBattleModal(spot){
