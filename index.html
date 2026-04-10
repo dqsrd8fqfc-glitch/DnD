@@ -1783,10 +1783,10 @@
       { icon:'⏳', text:'Five seconds', sub:'Drink continuously for a slow count of five.' },
       { icon:'🌊', text:'Waterfall', sub:'Everyone drinks together on camera. The DM calls the stop.' },
       { icon:'📅', text:'Years under Grok', sub:'Drink 1 finger for every year you have known Grok, to a maximum of 6.' },
-      { icon:'🍷', text:'Last orders', sub:'Take 2 fingers now and 2 more when the next card is revealed.' }
+      { icon:'🍷', text:'Last orders', sub:'Take 1 fingers now and 2 more when the next card is revealed.' }
     ];
     const NOMS = [
-      { icon:'👉', text:'Nominate 1 person', sub:'Choose who takes the penalty.' },
+      { icon:'👉', text:'Nominate 1 person', sub:'Choose who takes 1 finger penalty.' },
       { icon:'👉', text:'Nominate 2 fingers', sub:'Choose who drinks 2 fingers.' },
       { icon:'↩️', text:'Previous in order', sub:'The player before you in initiative drinks.' },
       { icon:'↪️', text:'Next in order', sub:'The player after you in initiative drinks.' },
@@ -1797,13 +1797,12 @@
     const SOCIALS = [
       { icon:'🥂', text:'SOCIAL!', sub:'Everyone drinks together.' },
       { icon:'🌊', text:'Waterfall', sub:'Everyone drinks together until the DM calls the stop.' },
-      { icon:'📜', text:'Make a Rule', sub:'Invent a rule that lasts until replaced.' },
       { icon:'🫱', text:'Pair Up', sub:'Choose a drinking partner until the next social card.' },
       { icon:'🤐', text:'Silence Rule', sub:'No one may speak in voice chat for one minute. First to break it drinks.' },
       { icon:'🎁', text:'The Gift Round', sub:'Each player assigns 1 finger to someone else.' }
     ];
     const HOTSEATS = [
-      { icon:'🪑', name:'Paranoia', desc:'Ask a paranoid question, message the DM your answer privately, and let the group stew in it.' },
+      { icon:'🪑', name:'Paranoia', desc:'Ask a paranoid question, and let the group stew in it.' },
       { icon:'⛪', name:'The Confession Box', desc:'A player must reveal a minor truth or drink.' },
       { icon:'🎤', name:'Press Conference', desc:'One player answers rapid-fire questions in voice chat for thirty seconds.' },
       { icon:'⭐', name:'Rate the Call', desc:'Choose a category and rank everyone in the call. Defend your choices.' },
@@ -1812,21 +1811,18 @@
     const CHALLENGES = [
       { icon:'⚔️', name:'Head to Head', desc:'Pick an opponent. The loser of the DM-set challenge drinks 2 fingers.' },
       { icon:'💪', name:'Dice Duel', desc:'Both players roll. Lower result drinks.' },
-      { icon:'👀', name:'Face-Off', desc:'Both players lock eyes on camera while the group counts. First to laugh or look away drinks.' },
-      { icon:'🪙', name:'Coin Toss', desc:'Call it in the air. Wrong call drinks.' },
       { icon:'👍', name:'Signal Master', desc:'Choose a simple hand sign on camera. Last person to copy it drinks.' },
-      { icon:'⚡', name:'Reflex Test', desc:'The DM names an object or emote. Last person to type it in chat drinks 2.' }
-    ];
-    const CURSES = [
       { icon:'🕯️', name:'The Dripping Wax', desc:'You must drink with your little finger raised until the curse is broken.' },
       { icon:'📛', name:'The Old Name', desc:'You may not say anyone’s real name for ten minutes.' },
       { icon:'🔗', name:'The Binding', desc:'Choose another player. Your fates are linked: when one drinks, both drink 1.' },
       { icon:'👁️', name:'The Watcher’s Mark', desc:'The DM may call on you to narrate one eerie detail whenever they wish.' },
+      { icon:'⚡', name:'Reflex Test', desc:'The DM names an object or emote. Last person to type it in chat drinks 2.' }
+    ];
+    const CURSES = [
       { icon:'🤫', name:'The Silence Hex', desc:'You may only type in chat, not speak in voice, until the next hotspot.' },
       { icon:'🍀', name:'The Borrowed Luck', desc:'Reroll or redraw once, then drink 2 when you do.' }
     ];
     const GAMES = [
-      { icon:'📈', name:'Higher or Lower', desc:'Guess higher or lower than the last number.' },
       { icon:'🎵', name:'Name That Tune', desc:'Post or say three words from a song. First correct guess chooses who drinks.' },
       { icon:'🃏', name:'Two Truths One Lie', desc:'Tell three statements. Table finds the lie.' },
       { icon:'🫵', name:'Most Likely To…', desc:'Vote together. The winner drinks.' },
@@ -1846,20 +1842,15 @@
     const ITEMS = [
       { icon:'🗝️', name:"The Landlord's Key", desc:'Skip one penalty entirely.' },
       { icon:'🧻', name:'The Sticky Napkin', desc:'The DM writes a secret dare for later.' },
-      { icon:'🏏', name:'The Lucky Cue', desc:'Challenge someone immediately.' },
-      { icon:'🍻', name:'The Mystery Pint', desc:'Swap drinks with another player.' },
       { icon:'🟤', name:'The Damp Coaster', desc:'Redirect one penalty to another player.' },
       { icon:'📒', name:'The Grease Ledger', desc:'The DM reveals one hidden secret from the bar.' },
       { icon:'🪙', name:'The Old Coin', desc:'Take a free spin of the wheel.' },
       { icon:'🥔', name:'The Last Crisp', desc:'Delegate a dare to someone else.' },
       { icon:'🔔', name:'The Bell of Last Orders', desc:'Everyone finishes what they are holding.' },
-      { icon:'🃏', name:'The Blank Card', desc:'Write any temporary rule you like.' },
       { icon:'👁️', name:"The Landlord's Eye", desc:'Ask one NPC a yes-or-no question.' },
       { icon:'🍹', name:'The House Special', desc:'The DM invents a mysterious drink effect.' },
-      { icon:'🌪️', name:'The Wild Card', desc:'Interrupt any hotspot result once.' },
       { icon:'🕰️', name:'The Stopped Clock', desc:'Freeze play for five minutes.' }
     ];
-
     const HOTSPOTS = [
       { id:'wheel', left:38, top:21, emoji:'🎡', tip:'Spinning Wheel', type:'wheel', mode:'core', coreAction:'wheel', customCards:[] },
       { id:'jukebox', left:70, top:21, emoji:'🪕', tip:'The Ukulele Band', type:'draw', mode:'core', coreAction:'jukebox', customCards:[
@@ -1886,7 +1877,6 @@
       ] },
       { id:'chests', left:60, top:20, emoji:'🧰', tip:'The Chests', type:'draw', mode:'core', coreAction:'chests', customCards:[
         { id:'chest_1', icon:'🗝️', text:'Hidden key', sub:'You find a useful key. Skip one penalty entirely.' },
-        { id:'chest_2', icon:'🪙', text:'Lucky coin', sub:'Take a reroll on the next game or contest.' },
         { id:'chest_3', icon:'🍾', text:'Old bottle', sub:'Choose someone else to drink 2 fingers.' },
         { id:'chest_4', icon:'🕷️', text:'Spider burst', sub:'You recoil from a nest of spiders and drink 2 fingers.' },
         { id:'chest_5', icon:'🧨', text:'Bad powder', sub:'The chest coughs dust in your face. You lose the next challenge automatically.' },
